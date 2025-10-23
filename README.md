@@ -8,3 +8,9 @@ E-Commerce Concesionario "Los Jefes" Melany Analuisa/Gustabo Venalcazar/Mateo Mo
 .- Hacer comit con comentarios coherentes de lo que hicieron
 
 .- El que la cage invita las papas a los demas >:v
+
+.- Primero se hace comit luego pul y luego push
+
+.- Los pul request se hacen todos los jueves a las 23:00 
+ 
+.- NO HACER PUSH LA CARPETA .IDEA 
