@@ -4,273 +4,164 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Catálogo - Concesionaria Los Jefes</title>
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
-    <style>
-        body {
-            margin: 0;
-            font-family: "Poppins", sans-serif;
-            background-color: #0f0f0f;
-            color: #fff;
-            overflow-x: hidden;
-        }
-
-        .navbar-brand, .navbar-nav .nav-link {
-            color: #d90429 !important;
-        }
-
-        .catalogo-titulo {
-            color: #d90429;
-            font-weight: 700;
-            margin-bottom: 40px;
-        }
-
-        .card {
-            background-color: #1a1a1a;
-            border: 1px solid #333;
-            color: #fff;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
-        }
-
-        .card-title {
-            color: #d90429;
-            font-weight: 600;
-        }
-
-        .precio {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #fff;
-            margin-bottom: 15px;
-        }
-
-        .btn-ver-mas {
-            background-color: #d90429;
-            border: none;
-            transition: background 0.3s;
-        }
-
-        .btn-ver-mas:hover {
-            background-color: #b1021f;
-        }
-
-        footer {
-            text-align: center;
-            padding: 20px 0;
-            background-color: #1a1a1a;
-            margin-top: 50px;
-            color: #ccc;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top shadow-sm px-4">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="#">Concesionaria Los Jefes</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
-                <li class="nav-item"><a class="nav-link active" href="#">Modelos</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Ofertas</a></li>
-                <li class="nav-item"><a class="nav-link" href="Formulario.html">Contacto</a></li>
-            </ul>
-        </div>
+<!-- ====== HEADER ====== -->
+<header class="site-header">
+    <div class="container header-row">
+        <a href="#" class="brand">
+            <img src="img/logo-los-jefes.png" alt="Concesionaria Los Jefes" class="brand__logo">
+            <span class="brand__text">Concesionaria Los Jefes</span>
+        </a>
+        <nav class="site-nav">
+            <a href="portada.html" class="site-nav__link">Inicio</a>
+            <a href="#" class="site-nav__link">Modelos</a>
+            <a href="#" class="site-nav__link">Ofertas</a>
+            <a href="Formulario.html" class="site-nav__link">Contacto</a>
+        </nav>
     </div>
-</nav>
+</header>
 
-<section class="catalogo py-5 mt-5 pt-5">
-    <div class="container">
-        <h1 class="text-center catalogo-titulo display-4">Nuestros Modelos Exclusivos</h1>
+<!-- ====== HERO ====== -->
+<section class="hero">
+    <div class="hero__media">
+        <img src="img/FotoCarroLujp.jpg" alt="Catálogo Los Jefes">
+    </div>
+    <div class="hero__content container">
+        <h1 class="hero__title">Nuestros Modelos Exclusivos</h1>
+        <p class="hero__subtitle">Encuentra el vehículo perfecto para ti: lujo, potencia y elegancia en un solo lugar.</p>
+    </div>
+</section>
 
-        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+<!-- ====== VEHICLES GRID ====== -->
+<section class="vehicles container">
+    <div class="vehicle-grid">
 
-            <!-- Producto 1 -->
-            <div class="col">
-                <div class="card h-100">
-                    <img src="img/FotoCarroLujp.jpg" class="card-img-top" alt="Auto Deportivo X90">
-                    <div class="card-body">
-                        <h5 class="card-title">Deportivo Furia X90</h5>
-                        <p class="precio">$150,000 USD</p>
-                        <p class="card-text">Potencia extrema y diseño aerodinámico. 0-100 km/h en 3.2s. Disponible en rojo y negro.</p>
-                        <a href="detalles-auto1.html" class="btn btn-ver-mas w-100">Ver más detalles</a>
-                    </div>
+        <!-- Auto 1 -->
+        <article class="vehicle-card">
+            <img src="img/FotoCarroLujp.jpg" alt="Auto Deportivo X90" class="vehicle-card__img">
+            <div class="vehicle-card__body">
+                <h3 class="vehicle-card__title">Deportivo Furia X90</h3>
+                <p class="vehicle-card__price">$150,000 USD</p>
+                <p>Potencia extrema y diseño aerodinámico. 0-100 km/h en 3.2s. Disponible en rojo y negro.</p>
+                <div class="vehicle-card__actions">
+                    <a href="detalles-auto1.html" class="btn btn--accent w-100">Ver más detalles</a>
                 </div>
             </div>
+        </article>
 
-            <!-- Producto 2 -->
-            <div class="col">
-                <div class="card h-100">
-                    <img src="img/FotoCarroSUV.jpg" class="card-img-top" alt="SUV Aventura GT">
-                    <div class="card-body">
-                        <h5 class="card-title">SUV Aventura GT</h5>
-                        <p class="precio">$75,000 USD</p>
-                        <p class="card-text">Lujo y capacidad para toda la familia. Tracción 4x4, asientos de cuero y tecnología avanzada.</p>
-                        <a href="detalles-auto2.html" class="btn btn-ver-mas w-100">Ver más detalles</a>
-                    </div>
+        <!-- Auto 2 -->
+        <article class="vehicle-card">
+            <img src="img/FotoCarroSUV.jpg" alt="SUV Aventura GT" class="vehicle-card__img">
+            <div class="vehicle-card__body">
+                <h3 class="vehicle-card__title">SUV Aventura GT</h3>
+                <p class="vehicle-card__price">$75,000 USD</p>
+                <p>Lujo y capacidad para toda la familia. Tracción 4x4, asientos de cuero y tecnología avanzada.</p>
+                <div class="vehicle-card__actions">
+                    <a href="detalles-auto1.html" class="btn btn--accent w-100">Ver más detalles</a>
                 </div>
             </div>
+        </article>
 
-            <!-- Producto 3 -->
-            <div class="col">
-                <div class="card h-100">
-                    <img src="img/FotoCarroClasico.jpg" class="card-img-top" alt="Clásico Leyenda 68">
-                    <div class="card-body">
-                        <h5 class="card-title">Clásico Leyenda 68</h5>
-                        <p class="precio">$90,000 USD</p>
-                        <p class="card-text">Un ícono restaurado a la perfección. Motor V8, pintura original y piezas de colección.</p>
-                        <a href="detalles-auto3.html" class="btn btn-ver-mas w-100">Ver más detalles</a>
-                    </div>
+        <!-- Auto 3 -->
+        <article class="vehicle-card">
+            <img src="img/FotoCarroClasico.jpg" alt="Clásico Leyenda 68" class="vehicle-card__img">
+            <div class="vehicle-card__body">
+                <h3 class="vehicle-card__title">Clásico Leyenda 68</h3>
+                <p class="vehicle-card__price">$90,000 USD</p>
+                <p>Un ícono restaurado a la perfección. Motor V8, pintura original y piezas de colección.</p>
+                <div class="vehicle-card__actions">
+                    <a href="detalles-auto1.html" class="btn btn--accent w-100">Ver más detalles</a>
                 </div>
             </div>
+        </article>
 
-            <!-- Producto 4 -->
-            <div class="col">
-                <div class="card h-100">
-                    <img src="img/FotoCarroElectrico.jpg" class="card-img-top" alt="EcoDrive E7">
-                    <div class="card-body">
-                        <h5 class="card-title">EcoDrive E7</h5>
-                        <p class="precio">$65,000 USD</p>
-                        <p class="card-text">Auto 100% eléctrico con autonomía de 500 km. Carga rápida y diseño futurista.</p>
-                        <a href="detalles-auto4.html" class="btn btn-ver-mas w-100">Ver más detalles</a>
-                    </div>
+        <!-- Auto 4 -->
+        <article class="vehicle-card">
+            <img src="img/card4.jpg" alt="EcoDrive E7" class="vehicle-card__img">
+            <div class="vehicle-card__body">
+                <h3 class="vehicle-card__title">EcoDrive E7</h3>
+                <p class="vehicle-card__price">$65,000 USD</p>
+                <p>Auto 100% eléctrico con autonomía de 500 km. Carga rápida y diseño futurista.</p>
+                <div class="vehicle-card__actions">
+                    <a href="detalles-auto1.html" class="btn btn--accent w-100">Ver más detalles</a>
                 </div>
             </div>
+        </article>
 
-            <!-- Producto 5 -->
-            <div class="col">
-                <div class="card h-100">
-                    <img src="img/FotoCarroPickup.jpg" class="card-img-top" alt="Pickup Titan X">
-                    <div class="card-body">
-                        <h5 class="card-title">Pickup Titan X</h5>
-                        <p class="precio">$82,000 USD</p>
-                        <p class="card-text">Potente y resistente. Ideal para trabajo pesado y aventuras extremas con estilo premium.</p>
-                        <a href="detalles-auto5.html" class="btn btn-ver-mas w-100">Ver más detalles</a>
-                    </div>
+        <!-- Auto 5 -->
+        <article class="vehicle-card">
+            <img src="img/card1.jpg" alt="Pickup Titan X" class="vehicle-card__img">
+            <div class="vehicle-card__body">
+                <h3 class="vehicle-card__title">Pickup Titan X</h3>
+                <p class="vehicle-card__price">$82,000 USD</p>
+                <p>Potente y resistente. Ideal para trabajo pesado y aventuras extremas con estilo premium.</p>
+                <div class="vehicle-card__actions">
+                    <a href="detalles-auto1.html" class="btn btn--accent w-100">Ver más detalles</a>
                 </div>
             </div>
-
-        </div>
+        </article>
 
     </div>
 </section>
 
-<footer>
-    <p>© 2025 Concesionaria Los Jefes. Todos los derechos reservados.</p>
+<!-- ====== FOOTER ====== -->
+<footer class="site-footer">
+    <div class="footer-grid">
+        <div>
+            <img src="img/logo-los-jefes.png" alt="Concesionaria Los Jefes" class="footer-logo">
+            <p>Concesionaria Los Jefes — Potencia y estilo sobre ruedas.</p>
+        </div>
+        <div>
+            <h6>Enlaces</h6>
+            <a href="portada.html">Inicio</a><br>
+            <a href="#">Modelos</a><br>
+            <a href="#">Ofertas</a><br>
+            <a href="Formulario.html">Contacto</a>
+        </div>
+        <div>
+            <h6>Contacto</h6>
+            <p>Quito, Ecuador<br>Tel: (02) 456 7890<br>Email: contacto@losjefes.com</p>
+        </div>
+    </div>
+    <p class="copy">© 2025 Concesionaria Los Jefes. Todos los derechos reservados.</p>
 </footer>
+
+<!-- ====== SCRIPT ORIGINAL ====== -->
 <script>
-    /*var texto1 = 'hola';
-    let texto2 = "hola";*/
     let products = [
-        {
-            id: 1,
-            producto: "Lamborghini",
-            price: 10200,
-            stock: 15,
-            ext: true
-        },
-        {
-            id: 2,
-            producto: "Ferrari",
-            price: 15000,
-            stock: 10,
-            ext: false
-        },
-        {
-            id: 3,
-            producto: "Porsche",
-            price: 12000,
-            stock: 8,
-            ext: true
-        },
-        {
-            id: 4,
-            producto: "McLaren",
-            price: 18000,
-            stock: 5,
-            ext: false
-        }
+        { id: 1, producto: "Lamborghini", price: 10200, stock: 15, ext: true },
+        { id: 2, producto: "Ferrari", price: 15000, stock: 10, ext: false },
+        { id: 3, producto: "Porsche", price: 12000, stock: 8, ext: true },
+        { id: 4, producto: "McLaren", price: 18000, stock: 5, ext: false }
     ];
 
-    function subt(producto){
-        return producto.price * producto.stock;
-    }
+    function subt(producto){ return producto.price * producto.stock; }
+
     function verifica(producto){
         console.log("verificando.......");
         return new Promise((resolve, reject) => {
             setTimeout(() => {
-                if (producto.stock) {
-                }else {
-                    resolve(producto);
-                    reject("sin stock");
-                }
+                if (producto.stock) { resolve(producto); }
+                else { reject("sin stock"); }
             },5000)
         })
-
     }
+
     function comprarproducto(producto){
         console.log("iniciando compra...");
         try {
-            const verificaProd = verifica (producto);
+            const verificaProd = verifica(producto);
             console.log("Verificando");
-            const subtotal = Subt();
-            console.log("Subtotal ",subtotal);
+            const subtotal = subt(producto);
+            console.log("Subtotal ", subtotal);
         } catch (error){
             console.error(error)
         }
     }
-
-
-
-
-   /* function totalCarrito(products) {
-        let total = 0;
-        let subt = 0;
-        for (let prod of products)
-                if(prod.ext){
-                    resolve(prod);
-                } else {
-                    reject("sin producto");
-                }
-    }
-        setTimeout(() => {
-            total += prod.price;
-            subt = prod.price * prod.stock;
-            console.log("el producto " + prod.producto + "existen "+prod.stock+" y su sub total es $"+subt);
-        },55)
-        return total;
-    }
-    console.log("El total del carrito es: $" + totalCarrito(products));*/
-
-
-    /*
-    let selectedQuantity = 2;
-    console.log(products);
-    console.log(products[0].id)
-
-    function price(qt, price){
-        let res= qt*price;
-        console.log(res);
-    }
-    const precio = (qt, price) => price*qt;
-    console.log(precio(2,5));
-
-
-    console.log("El precio del producto es");
-    price(products[0].stock, products[0].price)*/
 </script>
 </body>
 </html>
