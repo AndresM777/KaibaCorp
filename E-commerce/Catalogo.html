@@ -9,21 +9,18 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
     <style>
-        /* Mantén aquí los estilos que usaste para el cuerpo, la barra de navegación, etc. */
         body {
             margin: 0;
             font-family: "Poppins", sans-serif;
-            background-color: #0f0f0f; /* Fondo oscuro */
+            background-color: #0f0f0f;
             color: #fff;
             overflow-x: hidden;
         }
 
         .navbar-brand, .navbar-nav .nav-link {
-            /* Copia los estilos de la barra de navegación de tu archivo principal */
             color: #d90429 !important;
         }
 
-        /* Estilos específicos del catálogo */
         .catalogo-titulo {
             color: #d90429;
             font-weight: 700;
@@ -31,7 +28,7 @@
         }
 
         .card {
-            background-color: #1a1a1a; /* Fondo oscuro para la tarjeta */
+            background-color: #1a1a1a;
             border: 1px solid #333;
             color: #fff;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
@@ -39,7 +36,7 @@
         }
 
         .card:hover {
-            transform: translateY(-5px); /* Efecto de elevación al pasar el mouse */
+            transform: translateY(-5px);
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
         }
 
@@ -55,7 +52,6 @@
             margin-bottom: 15px;
         }
 
-        /* Estilo para el botón "Ver más" */
         .btn-ver-mas {
             background-color: #d90429;
             border: none;
@@ -66,7 +62,13 @@
             background-color: #b1021f;
         }
 
-        /* Puedes copiar aquí el resto de estilos de navbar y footer */
+        footer {
+            text-align: center;
+            padding: 20px 0;
+            background-color: #1a1a1a;
+            margin-top: 50px;
+            color: #ccc;
+        }
     </style>
 </head>
 
@@ -81,7 +83,8 @@
         </button>
         <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
             <ul class="navbar-nav">
-                <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li> <li class="nav-item"><a class="nav-link active" href="#">Modelos</a></li>
+                <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+                <li class="nav-item"><a class="nav-link active" href="#">Modelos</a></li>
                 <li class="nav-item"><a class="nav-link" href="#">Ofertas</a></li>
                 <li class="nav-item"><a class="nav-link" href="Formulario.html">Contacto</a></li>
             </ul>
@@ -95,30 +98,33 @@
 
         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
 
+            <!-- Producto 1 -->
             <div class="col">
                 <div class="card h-100">
                     <img src="img/FotoCarroLujp.jpg" class="card-img-top" alt="Auto Deportivo X90">
                     <div class="card-body">
                         <h5 class="card-title">Deportivo Furia X90</h5>
                         <p class="precio">$150,000 USD</p>
-                        <p class="card-text">Potencia extrema y diseño aerodinámico. Un 0-100 km/h en 3.2s. Disponible en rojo y negro.</p>
+                        <p class="card-text">Potencia extrema y diseño aerodinámico. 0-100 km/h en 3.2s. Disponible en rojo y negro.</p>
                         <a href="detalles-auto1.html" class="btn btn-ver-mas w-100">Ver más detalles</a>
                     </div>
                 </div>
             </div>
 
+            <!-- Producto 2 -->
             <div class="col">
                 <div class="card h-100">
                     <img src="img/FotoCarroSUV.jpg" class="card-img-top" alt="SUV Aventura GT">
                     <div class="card-body">
                         <h5 class="card-title">SUV Aventura GT</h5>
                         <p class="precio">$75,000 USD</p>
-                        <p class="card-text">Lujo y capacidad para toda la familia. Tracción 4x4, asientos de cuero y alta tecnología de seguridad.</p>
+                        <p class="card-text">Lujo y capacidad para toda la familia. Tracción 4x4, asientos de cuero y tecnología avanzada.</p>
                         <a href="detalles-auto2.html" class="btn btn-ver-mas w-100">Ver más detalles</a>
                     </div>
                 </div>
             </div>
 
+            <!-- Producto 3 -->
             <div class="col">
                 <div class="card h-100">
                     <img src="img/FotoCarroClasico.jpg" class="card-img-top" alt="Clásico Leyenda 68">
@@ -131,14 +137,140 @@
                 </div>
             </div>
 
+            <!-- Producto 4 -->
+            <div class="col">
+                <div class="card h-100">
+                    <img src="img/FotoCarroElectrico.jpg" class="card-img-top" alt="EcoDrive E7">
+                    <div class="card-body">
+                        <h5 class="card-title">EcoDrive E7</h5>
+                        <p class="precio">$65,000 USD</p>
+                        <p class="card-text">Auto 100% eléctrico con autonomía de 500 km. Carga rápida y diseño futurista.</p>
+                        <a href="detalles-auto4.html" class="btn btn-ver-mas w-100">Ver más detalles</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Producto 5 -->
+            <div class="col">
+                <div class="card h-100">
+                    <img src="img/FotoCarroPickup.jpg" class="card-img-top" alt="Pickup Titan X">
+                    <div class="card-body">
+                        <h5 class="card-title">Pickup Titan X</h5>
+                        <p class="precio">$82,000 USD</p>
+                        <p class="card-text">Potente y resistente. Ideal para trabajo pesado y aventuras extremas con estilo premium.</p>
+                        <a href="detalles-auto5.html" class="btn btn-ver-mas w-100">Ver más detalles</a>
+                    </div>
+                </div>
+            </div>
+
         </div>
 
     </div>
 </section>
 
 <footer>
-    <p>© 2025 Carros Los Jefes. Todos los derechos reservados.</p>
+    <p>© 2025 Concesionaria Los Jefes. Todos los derechos reservados.</p>
 </footer>
+<script>
+    /*var texto1 = 'hola';
+    let texto2 = "hola";*/
+    let products = [
+        {
+            id: 1,
+            producto: "Lamborghini",
+            price: 10200,
+            stock: 15,
+            ext: true
+        },
+        {
+            id: 2,
+            producto: "Ferrari",
+            price: 15000,
+            stock: 10,
+            ext: false
+        },
+        {
+            id: 3,
+            producto: "Porsche",
+            price: 12000,
+            stock: 8,
+            ext: true
+        },
+        {
+            id: 4,
+            producto: "McLaren",
+            price: 18000,
+            stock: 5,
+            ext: false
+        }
+    ];
 
+    function subt(producto){
+        return producto.price * producto.stock;
+    }
+    function verifica(producto){
+        console.log("verificando.......");
+        return new Promise((resolve, reject) => {
+            setTimeout(() => {
+                if (producto.stock) {
+                }else {
+                    resolve(producto);
+                    reject("sin stock");
+                }
+            },5000)
+        })
+
+    }
+    function comprarproducto(producto){
+        console.log("iniciando compra...");
+        try {
+            const verificaProd = verifica (producto);
+            console.log("Verificando");
+            const subtotal = Subt();
+            console.log("Subtotal ",subtotal);
+        } catch (error){
+            console.error(error)
+        }
+    }
+
+
+
+
+   /* function totalCarrito(products) {
+        let total = 0;
+        let subt = 0;
+        for (let prod of products)
+                if(prod.ext){
+                    resolve(prod);
+                } else {
+                    reject("sin producto");
+                }
+    }
+        setTimeout(() => {
+            total += prod.price;
+            subt = prod.price * prod.stock;
+            console.log("el producto " + prod.producto + "existen "+prod.stock+" y su sub total es $"+subt);
+        },55)
+        return total;
+    }
+    console.log("El total del carrito es: $" + totalCarrito(products));*/
+
+
+    /*
+    let selectedQuantity = 2;
+    console.log(products);
+    console.log(products[0].id)
+
+    function price(qt, price){
+        let res= qt*price;
+        console.log(res);
+    }
+    const precio = (qt, price) => price*qt;
+    console.log(precio(2,5));
+
+
+    console.log("El precio del producto es");
+    price(products[0].stock, products[0].price)*/
+</script>
 </body>
 </html>

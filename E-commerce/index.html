@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Concesionario Los Jefes</title>
+    <link rel="stylesheet" href="assets/styles.css">
+    <meta name="theme-color" content="#0e2a46">
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+    <div class="container header-row">
+        <a class="brand" href="#">
+            <img class="brand__logo" src="assets/img/logo-los-jefes.png" alt="Concesionario Los Jefes">
+            <span class="brand__text">LOS JEFES</span>
+        </a>
+
+        <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+
+        <nav class="site-nav" aria-label="Principal">
+            <a href="#inicio" class="site-nav__link">Inicio</a>
+            <a href="#vehiculos" class="site-nav__link">Vehículos</a>
+            <a href="#promos" class="site-nav__link">Promociones</a>
+            <a href="#financia" class="site-nav__link">Financiación</a>
+            <a href="#nosotros" class="site-nav__link">Sobre Nosotros</a>
+            <a href="#contacto" class="site-nav__link">Contacto</a>
+        </nav>
+    </div>
+
+    <!-- Tira de marcas -->
+    <div class="container brands-strip" aria-label="Marcas disponibles">
+        <img src="assets/img/toyota.png" alt="Toyota">
+        <img src="assets/img/mazda.svg" alt="Mazda">
+        <img src="assets/img/porsche.png" alt="Porsche">
+        <img src="assets/img/chevrolet.png" alt="Chevrolet">
+    </div>
+</header>
+
+<main>
+    <!-- HERO -->
+    <section id="inicio" class="hero">
+        <picture class="hero__media">
+            <img src="assets/img/hero.jpg" alt="Auto deportivo gris">
+        </picture>
+        <div class="hero__content container">
+            <h1 class="hero__title">Encuentra tu nuevo vehículo con estilo y confianza.</h1>
+            <p class="hero__subtitle">Modelos 0 km · Garantía oficial · Planes flexibles</p>
+            <a href="#vehiculos" class="btn btn--accent">VER MODELOS DISPONIBLES</a>
+        </div>
+    </section>
+
+    <!-- BANNER -->
+    <section class="banner container">
+        <img src="assets/img/banner.jpg" alt="Auto destacado en carretera">
+    </section>
+
+    <!-- VEHÍCULOS -->
+    <section id="vehiculos" class="vehicles container">
+        <header class="section-head">
+            <h2>Vehículos destacados</h2>
+            <p id="promos" class="section-sub">Entregas inmediatas y financiación aprobada en minutos.</p>
+        </header>
+
+        <div class="vehicle-grid">
+            <article class="vehicle-card">
+                <img class="vehicle-card__img" src="assets/img/card1.jpg" alt="Modelo Deportivo 2025 gris">
+                <div class="vehicle-card__body">
+                    <h3 class="vehicle-card__title">Toyota Supra 2025</h3>
+                    <ul class="vehicle-card__meta"><li>0 km</li><li>Automático</li><li>Gasolina</li></ul>
+                    <div class="vehicle-card__price">$45,900</div>
+                    <div class="vehicle-card__actions">
+                        <a href="#contacto" class="btn btn--primary">Cotizar</a>
+                        <a href="#" class="btn btn--ghost">Ver más</a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="vehicle-card">
+                <img class="vehicle-card__img" src="assets/img/card2.jpg" alt="Mazda CX-5 2025 roja">
+                <div class="vehicle-card__body">
+                    <h3 class="vehicle-card__title">Mazda CX-5 2025</h3>
+                    <ul class="vehicle-card__meta"><li>0 km</li><li>Automático</li><li>Gasolina</li></ul>
+                    <div class="vehicle-card__price">$39,800</div>
+                    <div class="vehicle-card__actions">
+                        <a href="#contacto" class="btn btn--primary">Cotizar</a>
+                        <a href="#" class="btn btn--ghost">Ver más</a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="vehicle-card">
+                <img class="vehicle-card__img" src="assets/img/card3.jpg" alt="Porsche Cayenne 2024">
+                <div class="vehicle-card__body">
+                    <h3 class="vehicle-card__title">Porsche Cayenne 2024</h3>
+                    <ul class="vehicle-card__meta"><li>0 km</li><li>Automático</li><li>Híbrido</li></ul>
+                    <div class="vehicle-card__price">$120,000</div>
+                    <div class="vehicle-card__actions">
+                        <a href="#contacto" class="btn btn--primary">Cotizar</a>
+                        <a href="#" class="btn btn--ghost">Ver más</a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="vehicle-card">
+                <img class="vehicle-card__img" src="assets/img/card4.jpg" alt="Chevrolet Tracker 2024">
+                <div class="vehicle-card__body">
+                    <h3 class="vehicle-card__title">Chevrolet Tracker 2024</h3>
+                    <ul class="vehicle-card__meta"><li>0 km</li><li>Automático</li><li>Gasolina</li></ul>
+                    <div class="vehicle-card__price">$28,900</div>
+                    <div class="vehicle-card__actions">
+                        <a href="#contacto" class="btn btn--primary">Cotizar</a>
+                        <a href="#" class="btn btn--ghost">Ver más</a>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- FINANCIACIÓN -->
+    <section id="financia" class="finance bg-header">
+        <div class="container finance__box">
+            <div class="finance__copy">
+                <h2>Financia tu auto</h2>
+                <p>Cuotas accesibles, aprobación rápida y asesoría personalizada.</p>
+            </div>
+            <a class="btn btn--accent" href="#contacto">SIMULAR Y COTIZAR</a>
+        </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section id="contacto" class="contact container">
+        <div class="contact__grid">
+            <div class="contact__form">
+                <h3>¿Tienes dudas? ¡Déjanos ayudarte!</h3>
+                <form novalidate>
+                    <div class="field"><label for="dni">Cédula</label><input id="dni" placeholder="1712345678"></div>
+                    <div class="field"><label for="nombres">Nombres</label><input id="nombres" placeholder="Tus nombres"></div>
+                    <div class="field"><label for="apellidos">Apellidos</label><input id="apellidos" placeholder="Tus apellidos"></div>
+                    <div class="field"><label for="correo">Correo</label><input id="correo" type="email" placeholder="tucorreo@mail.com"></div>
+                    <div class="field"><label for="telefono">Teléfono</label><input id="telefono" type="tel" placeholder="09xxxxxxxx"></div>
+                    <div class="field"><label for="msg">Mensaje</label><textarea id="msg" rows="4" placeholder="¿Qué modelo deseas cotizar?"></textarea></div>
+                    <button class="btn btn--primary" type="submit">Enviar consulta</button>
+                    <p class="form-note"></p>
+                </form>
+            </div>
+
+            <aside class="contact__aside">
+                <h4>Atención inmediata</h4>
+                <ul class="contact__list">
+                    <li>📞 02 000 000</li>
+                    <li>📱 09 999 9999</li>
+                    <li>📍 Quito, Ecuador</li>
+                </ul>
+                <div class="aside-card">
+                    <h5>Horarios</h5>
+                    <p>Lun–Sáb 09:00–18:30 · Dom 10:00–14:00</p>
+                </div>
+            </aside>
+        </div>
+    </section>
+</main>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+    <div class="container footer-grid">
+        <div>
+            <img class="footer-logo" src="assets/img/logo-los-jefes.png" alt="Los Jefes">
+            <p>Concesionario de confianza. Garantía oficial y respaldo.</p>
+        </div>
+        <nav>
+            <h6>Secciones</h6>
+            <ul>
+                <li><a href="#vehiculos">Vehículos</a></li>
+                <li><a href="#promos">Promociones</a></li>
+                <li><a href="#financia">Financiación</a></li>
+            </ul>
+        </nav>
+        <div>
+            <h6>Contacto</h6>
+            <ul>
+                <li>Quito – Ecuador</li>
+                <li>contacto@losjefes.com</li>
+                <li>@losjefes</li>
+            </ul>
+        </div>
+    </div>
+    <p class="copy">© 2025 Concesionario Los Jefes. Todos los derechos reservados.</p>
+</footer>
+
+<script>
+    const btn = document.querySelector('.nav-toggle');
+    const nav = document.querySelector('.site-nav');
+    btn.addEventListener('click', () => {
+        const open = btn.getAttribute('aria-expanded') === 'true';
+        btn.setAttribute('aria-expanded', String(!open));
+        nav.classList.toggle('is-open');
+        document.body.classList.toggle('no-scroll', !open);
+    });
+
+    const form = document.querySelector('form');
+    const note = document.querySelector('.form-note');
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        note.textContent = '¡Gracias! Tu solicitud fue enviada.';
+        form.reset();
+    });
+</script>
+</body>
+</html>
