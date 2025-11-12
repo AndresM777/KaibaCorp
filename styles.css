@@ -174,3 +174,148 @@ body{
     .vehicle-grid{grid-template-columns:1fr}
     .hero__media img{height:360px}
 }
+
+/* ====== BARRA DE BÚSQUEDA ====== */
+.search-bar {
+    flex: 1;
+    max-width: 500px;
+    margin: 0 40px;
+    display: flex;
+    align-items: center;
+    background: #ffffff;
+    border-radius: 30px;
+    overflow: hidden;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.search-bar input {
+    flex: 1;
+    border: none;
+    outline: none;
+    font-size: 14px;
+    padding: 10px 16px;
+    border-radius: 30px 0 0 30px;
+    background: transparent;
+    color: #333;
+}
+
+.search-bar input::placeholder {
+    color: #777;
+}
+
+.search-bar button {
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    padding: 10px 22px;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 0 30px 30px 0;
+    transition: background 0.25s ease, transform 0.2s ease;
+}
+
+.search-bar button:hover {
+    background: #a91e1e;
+    transform: scale(1.05);
+}
+
+/* ====== MENSAJE FLOTANTE ====== */
+.mensaje-flotante {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #0e2a46;
+    color: #fff;
+    padding: 12px 25px;
+    border-radius: 25px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    font-weight: 500;
+    font-size: 14px;
+    display: none;
+    z-index: 9999;
+}
+.mensaje-flotante.ok {
+    background-color: #2e7d32; /* Verde éxito */
+}
+.mensaje-flotante.error {
+    background-color: #c62828; /* Rojo error */
+}
+
+/* ====== BOTÓN FLOTANTE "SUBIR" ====== */
+#btnSubir {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    background-color: #0e2a46;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    font-size: 20px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    display: none;
+    transition: all 0.3s ease;
+    z-index: 9999;
+}
+#btnSubir:hover {
+    background-color: #c62828;
+    transform: scale(1.1);
+}
+
+/* ====== RESPONSIVE ====== */
+@media (max-width: 760px) {
+    .vehicle-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .search-bar {
+        max-width: 300px;
+    }
+}
+/* ====== MARCAS ALIADAS (socios) ====== */
+.brands-grid {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    flex-wrap: wrap;
+    gap: 40px;
+    margin-top: 30px;
+    text-align: center;
+}
+
+.brand-card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 25px 20px;
+    width: 200px;              /* mismo ancho para todas */
+    height: 170px;             /* mismo alto */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.brand-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.brand-card img {
+    height: 65px;
+    width: auto;
+    object-fit: contain;
+    margin-bottom: 10px;
+}
+
+.brand-card h4 {
+    margin: 0;
+    font-size: 15px;
+    color: var(--ink);
+    font-weight: 600;
+    text-transform: uppercase;
+}
