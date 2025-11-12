@@ -1,0 +1,16 @@
+# Archivos y carpetas del IDE
+.idea/
+*.iml
+*.log
+
+# Sistema
+.DS_Store
+Thumbs.db
+
+# Dependencias
+node_modules/
+
+# Archivos temporales
+*.tmp
+*.swp
+*.bak
