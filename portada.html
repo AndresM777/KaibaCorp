@@ -4,9 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Concesionaria Los Jefes</title>
+    <link rel="stylesheet" href="bootstrap.min.css">
     <link rel="stylesheet" href="styles.css">
+    <script src="jquery-3.7.1.min.js"></script>
     <meta name="theme-color" content="#0e2a46">
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 </head>
 
 <body>
@@ -19,9 +20,15 @@
             <span class="brand__text">LOS JEFES</span>
         </a>
 
-        <form id="searchForm" class="search-bar">
-            <input type="text" id="searchInput" placeholder="Buscar vehículo o modelo...">
-            <button type="submit">Buscar</button>
+        <form id="searchForm" class="d-flex mx-auto" style="max-width:600px; width:100%;">
+            <input
+                    id="searchInput"
+                    class="form-control me-2"
+                    type="search"
+                    placeholder="Buscar vehículo o modelo..."
+                    aria-label="Buscar"
+                    style="font-size:15px; padding:10px 14px;">
+            <button class="btn btn-danger fw-bold px-4" type="submit">Buscar</button>
         </form>
 
         <nav class="site-nav">
@@ -35,7 +42,7 @@
 <!-- ====== HERO ====== -->
 <section id="inicio" class="hero">
     <picture class="hero__media">
-        <img src="img/hero.jpg" alt="Auto deportivo gris">
+        <img src="img/FotoPortada.png" alt="Auto deportivo gris">
     </picture>
     <div class="hero__content container">
         <h1 class="hero__title">Encuentra tu nuevo vehículo con estilo y confianza.</h1>
@@ -152,7 +159,7 @@
     </div>
     <p class="copy">© 2025 Concesionario Los Jefes. Todos los derechos reservados.</p>
 </footer>
-
+<script src="bootstrap.bundle.min.js"></script>
 <script src="Portada.js"></script>
 </body>
 </html>
