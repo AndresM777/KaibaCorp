@@ -8,6 +8,9 @@
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
 
+    <!-- jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
     <!-- Hoja de estilos personalizada -->
     <link rel="stylesheet" href="styles.css">
 </head>
@@ -35,6 +38,10 @@
             <a href="#" class="site-nav__link">Modelos</a>
             <a href="#" class="site-nav__link">Ofertas</a>
             <a href="Formulario.html" class="site-nav__link">Contacto</a>
+            <a href="carrito.html" class="site-nav__link" style="position: relative;">
+                🛒 Carrito
+                <span id="cart-count" class="cart-badge">0</span>
+            </a>
         </nav>
     </div>
 </header>
@@ -59,9 +66,6 @@
 
     <div class="vehicle-grid" id="productos">
         <!-- Las tarjetas se generarán dinámicamente aquí con JavaScript -->
-        <div style="grid-column: 1/-1; text-align: center; padding: 40px;">
-            <p style="color: #5b6b7a;">Cargando vehículos...</p>
-        </div>
     </div>
 </section>
 
@@ -92,8 +96,222 @@
 <!-- Bootstrap 5 JS Bundle (incluye Popper) -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
 
-<!-- Script de productos -->
-<script src="productos.js"></script>
+<!-- Sistema de carrito integrado -->
+<script>
+    // Array de productos
+    const listaProductos = [
+        {
+            id: 1,
+            titulo: "Deportivo Furia X90",
+            imagen: "img/3porsche.jpg",
+            precio: 150000,
+            descripcion: "Potencia extrema y diseño aerodinámico. 0-100 km/h en 3.2s. Disponible en rojo y negro.",
+            enlace: "detalles-auto1.html"
+        },
+        {
+            id: 2,
+            titulo: "SUV Aventura GT",
+            imagen: "img/3mazda.jpg",
+            precio: 75000,
+            descripcion: "Lujo y capacidad para toda la familia. Tracción 4x4, asientos de cuero y tecnología avanzada.",
+            enlace: "detalles-auto2.html"
+        },
+        {
+            id: 3,
+            titulo: "Clásico Leyenda 68",
+            imagen: "img/2toyota.jpg",
+            precio: 90000,
+            descripcion: "Un ícono restaurado a la perfección. Motor V8, pintura original y piezas de colección.",
+            enlace: "detalles-auto3.html"
+        },
+        {
+            id: 4,
+            titulo: "EcoDrive E7",
+            imagen: "img/1mazda.jpeg",
+            precio: 65000,
+            descripcion: "Auto 100% eléctrico con autonomía de 500 km. Carga rápida y diseño futurista.",
+            enlace: "detalles-auto4.html"
+        },
+        {
+            id: 5,
+            titulo: "Pickup Titan X",
+            imagen: "img/2toyota.jpg",
+            precio: 82000,
+            descripcion: "Potente y resistente. Ideal para trabajo pesado y aventuras extremas con estilo premium.",
+            enlace: "detalles-auto5.html"
+        }
+    ];
+
+    // Funciones del carrito
+    function obtenerCarrito() {
+        const carrito = localStorage.getItem('carrito');
+        return carrito ? JSON.parse(carrito) : [];
+    }
+
+    function guardarCarrito(carrito) {
+        localStorage.setItem('carrito', JSON.stringify(carrito));
+        actualizarContadorCarrito();
+    }
+
+    function actualizarContadorCarrito() {
+        const carrito = obtenerCarrito();
+        const total = carrito.reduce((sum, item) => sum + item.cantidad, 0);
+        const badge = document.getElementById('cart-count');
+        if (badge) {
+            badge.textContent = total;
+            badge.style.display = total > 0 ? 'flex' : 'none';
+        }
+    }
+
+    function agregarAlCarrito(idProducto) {
+        console.log('Agregando producto ID:', idProducto);
+
+        const producto = listaProductos.find(p => p.id === idProducto);
+
+        if (!producto) {
+            alert('Producto no encontrado');
+            return;
+        }
+
+        let carrito = obtenerCarrito();
+        const indiceExistente = carrito.findIndex(item => item.id === idProducto);
+
+        if (indiceExistente !== -1) {
+            carrito[indiceExistente].cantidad += 1;
+        } else {
+            carrito.push({
+                id: producto.id,
+                titulo: producto.titulo,
+                imagen: producto.imagen,
+                precio: producto.precio,
+                cantidad: 1
+            });
+        }
+
+        guardarCarrito(carrito);
+        mostrarMensaje('✅ Producto añadido al carrito');
+    }
+
+    function mostrarMensaje(mensaje) {
+        const div = document.createElement('div');
+        div.textContent = mensaje;
+        div.style.cssText = `
+        position: fixed;
+        top: 80px;
+        right: 20px;
+        background: #2f7a2f;
+        color: white;
+        padding: 15px 25px;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        z-index: 9999;
+        font-weight: 600;
+    `;
+
+        document.body.appendChild(div);
+
+        setTimeout(() => {
+            div.style.opacity = '0';
+            div.style.transition = 'opacity 0.3s';
+            setTimeout(() => div.remove(), 300);
+        }, 2000);
+    }
+
+    function formatearPrecio(precio) {
+        return `${precio.toLocaleString('en-US')} USD`;
+    }
+
+    function cargarProductos() {
+        console.log('Cargando productos...');
+        const contenedor = document.getElementById('productos');
+        if (!contenedor) {
+            console.error('No se encontró el contenedor #productos');
+            return;
+        }
+
+        let htmlProductos = '';
+
+        for(let i = 0; i < listaProductos.length; i++) {
+            const producto = listaProductos[i];
+
+            htmlProductos += `
+            <article class="vehicle-card">
+                <img src="${producto.imagen}"
+                     alt="${producto.titulo}"
+                     class="vehicle-card__img">
+                <div class="vehicle-card__body">
+                    <h3 class="vehicle-card__title">${producto.titulo}</h3>
+                    <p class="vehicle-card__price">${formatearPrecio(producto.precio)}</p>
+                    <p style="margin-bottom: 14px; color: #5b6b7a; font-size: 14px;">${producto.descripcion}</p>
+                    <div class="vehicle-card__actions" style="display: flex; gap: 8px; flex-direction: column;">
+                        <button class="btn-add-cart" onclick="agregarAlCarrito(${producto.id})">
+                            <span style="font-size: 18px;">+</span> Añadir al carrito
+                        </button>
+                        <a href="${producto.enlace}"
+                           class="btn btn--accent"
+                           style="width: 100%; text-align: center;">
+                           Ver más detalles
+                        </a>
+                    </div>
+                </div>
+            </article>
+        `;
+        }
+
+        contenedor.innerHTML = htmlProductos;
+        console.log('Productos cargados:', listaProductos.length);
+    }
+
+    // Inicializar
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log('DOM cargado');
+        actualizarContadorCarrito();
+        cargarProductos();
+    });
+</script>
+
+<style>
+    .cart-badge {
+        position: absolute;
+        top: -8px;
+        right: -10px;
+        background: #d62828;
+        color: white;
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        font-size: 11px;
+        font-weight: bold;
+    }
+
+    .btn-add-cart {
+        background: #2f7a2f;
+        color: white;
+        border: none;
+        padding: 8px 16px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: all 0.3s;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .btn-add-cart:hover {
+        background: #267026;
+        transform: translateY(-2px);
+    }
+
+    .btn-add-cart:active {
+        transform: scale(0.95);
+    }
+</style>
 
 <!-- Script para el menú móvil -->
 <script>

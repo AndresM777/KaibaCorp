@@ -68,10 +68,13 @@ function cargarProductos() {
                     <h3 class="vehicle-card__title">${producto.titulo}</h3>
                     <p class="vehicle-card__price">${formatearPrecio(producto.precio)}</p>
                     <p style="margin-bottom: 14px; color: #5b6b7a; font-size: 14px;">${producto.descripcion}</p>
-                    <div class="vehicle-card__actions">
+                    <div class="vehicle-card__actions" style="display: flex; gap: 8px; flex-direction: column;">
+                        <button class="btn-add-cart" onclick="agregarAlCarrito(${producto.id})">
+                            <span style="font-size: 18px;">+</span> Añadir al carrito
+                        </button>
                         <a href="${producto.enlace}" 
                            class="btn btn--accent"
-                           style="width: 100%;"
+                           style="width: 100%; text-align: center;"
                            onclick="verDetalles(${producto.id}); return true;">
                            Ver más detalles
                         </a>
@@ -116,6 +119,111 @@ document.addEventListener('DOMContentLoaded', function() {
         console.error('ERROR: No se encontró el contenedor #productos');
     }
 });
+
+// Función para agregar al carrito (disponible globalmente)
+function agregarAlCarrito(idProducto) {
+    console.log('Intentando agregar producto:', idProducto);
+
+    // Buscar el producto en el array
+    const producto = listaProductos.find(p => p.id === idProducto);
+
+    if (!producto) {
+        alert('Producto no encontrado');
+        return;
+    }
+
+    // Obtener carrito actual
+    let carrito = obtenerCarrito();
+
+    // Verificar si el producto ya existe en el carrito
+    const indiceExistente = carrito.findIndex(item => item.id === idProducto);
+
+    if (indiceExistente !== -1) {
+        // Si existe, incrementar cantidad
+        carrito[indiceExistente].cantidad += 1;
+    } else {
+        // Si no existe, agregarlo
+        carrito.push({
+            id: producto.id,
+            titulo: producto.titulo,
+            imagen: producto.imagen,
+            precio: producto.precio,
+            cantidad: 1
+        });
+    }
+
+    // Guardar en localStorage
+    guardarCarrito(carrito);
+
+    // Mostrar mensaje de éxito
+    mostrarMensaje('✅ Producto añadido al carrito');
+
+    console.log('Carrito actualizado:', carrito);
+}
+
+// Obtener carrito del localStorage
+function obtenerCarrito() {
+    const carrito = localStorage.getItem('carrito');
+    return carrito ? JSON.parse(carrito) : [];
+}
+
+// Guardar carrito en localStorage
+function guardarCarrito(carrito) {
+    localStorage.setItem('carrito', JSON.stringify(carrito));
+    actualizarContadorCarrito();
+}
+
+// Actualizar contador del carrito en el header
+function actualizarContadorCarrito() {
+    const carrito = obtenerCarrito();
+    const total = carrito.reduce((sum, item) => sum + item.cantidad, 0);
+    const badge = document.getElementById('cart-count');
+    if (badge) {
+        badge.textContent = total;
+        badge.style.display = total > 0 ? 'flex' : 'none';
+    }
+}
+
+// Función para mostrar mensajes temporales
+function mostrarMensaje(mensaje) {
+    // Crear elemento de mensaje
+    const div = document.createElement('div');
+    div.textContent = mensaje;
+    div.style.cssText = `
+        position: fixed;
+        top: 80px;
+        right: 20px;
+        background: #2f7a2f;
+        color: white;
+        padding: 15px 25px;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        z-index: 9999;
+        animation: slideIn 0.3s ease;
+        font-weight: 600;
+    `;
+
+    // Agregar animación
+    const style = document.createElement('style');
+    style.textContent = `
+        @keyframes slideIn {
+            from { transform: translateX(400px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+    `;
+    if (!document.querySelector('style[data-toast]')) {
+        style.setAttribute('data-toast', 'true');
+        document.head.appendChild(style);
+    }
+
+    document.body.appendChild(div);
+
+    // Remover después de 2 segundos
+    setTimeout(() => {
+        div.style.animation = 'slideIn 0.3s ease reverse';
+        setTimeout(() => div.remove(), 300);
+    }, 2000);
+}
 
 // Exportar funciones si es necesario
 // (útil si quieres usar estos datos en otras páginas)
