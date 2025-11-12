@@ -1,77 +1,101 @@
-const AUTOS = [
-    {
-        id: 1,
-        nombre: "Deportivo Furia X90",
-        precio: 150000,
-        descripcion_corta: "Potencia extrema y diseño aerodinámico.",
-        descripcion_larga: "Coupé deportivo con aceleración inmediata y estabilidad a alta velocidad. Interior simple y cómodo para uso diario.",
-        portada: "img/3porsche.jpg",
-        destacada: "img/3porsche.jpg",
-        colores: [
-            { nombre: "Rojo", codigo: "#c0392b" },
-            { nombre: "Negro", codigo: "#1f2937" }
-        ],
-        galeria: ["img/3porsche.jpg"],
-        relacionados: [2, 3]
-    },
-    {
-        id: 2,
-        nombre: "SUV Aventura GT",
-        precio: 75000,
-        descripcion_corta: "Lujo y capacidad para toda la familia.",
-        descripcion_larga: "SUV amplio con tracción inteligente y asistencias básicas de conducción. Pensado para viajes y ciudad.",
-        portada: "img/3mazda.jpg",
-        destacada: "img/3mazda.jpg",
-        colores: [
-            { nombre: "Gris", codigo: "#6b7280" },
-            { nombre: "Azul", codigo: "#2563eb" }
-        ],
-        galeria: ["img/3mazda.jpg"],
-        relacionados: [1, 4]
-    },
-    {
-        id: 3,
-        nombre: "Clásico Leyenda 68",
-        precio: 90000,
-        descripcion_corta: "Ícono restaurado con motor V8.",
-        descripcion_larga: "Estilo retro con detalles cuidados y manejo sencillo. Ideal para quienes buscan un clásico confiable.",
-        portada: "img/2toyota.jpg",
-        destacada: "img/2toyota.jpg",
-        colores: [
-            { nombre: "Naranja", codigo: "#cc4e1a" },
-            { nombre: "Blanco", codigo: "#e5e7eb" }
-        ],
-        galeria: ["img/2toyota.jpg"],
-        relacionados: [1, 5]
-    },
-    {
-        id: 4,
-        nombre: "EcoDrive E7",
-        precio: 65000,
-        descripcion_corta: "Eléctrico con autonomía práctica.",
-        descripcion_larga: "Conducción silenciosa y recarga rápida. Tecnología simple para uso diario y ahorro de energía.",
-        portada: "img/1mazda.jpeg",
-        destacada: "img/1mazda.jpeg",
-        colores: [
-            { nombre: "Azul", codigo: "#1d4ed8" },
-            { nombre: "Plata", codigo: "#9ca3af" }
-        ],
-        galeria: ["img/1mazda.jpeg"],
-        relacionados: [2]
-    },
-    {
-        id: 5,
-        nombre: "Pickup Titan X",
-        precio: 82000,
-        descripcion_corta: "Potente y resistente para trabajo.",
-        descripcion_larga: "Caja amplia y suspensión firme. Útil para carga, con cabina cómoda y controles sencillos.",
-        portada: "img/2toyota.jpg",
-        destacada: "img/2toyota.jpg",
-        colores: [
-            { nombre: "Gris Oscuro", codigo: "#374151" },
-            { nombre: "Rojo", codigo: "#b91c1c" }
-        ],
-        galeria: ["img/2toyota.jpg"],
-        relacionados: [3]
+// detalle.js (drop-in)
+(function () {
+    const IVA = 0.15;
+
+    // 1) Tomar id ?id=...
+    const qs = new URLSearchParams(location.search);
+    let id = qs.get("id") || localStorage.getItem("ultimo_auto_id");
+    if (id) localStorage.setItem("ultimo_auto_id", id);
+
+    // 2) Cargar datos (array u objeto)
+    const DB = window.AUTOS || [];
+    let auto = null;
+
+    if (Array.isArray(DB)) {
+        auto = DB.find(a => String(a.id) === String(id));
+    } else {
+        auto = DB[id] || DB[String(id)] || null;
     }
-];
+
+    // Si no lo encuentra, mostrar aviso
+    if (!auto) {
+        document.getElementById("detalle").innerHTML =
+            `<div class="container py-5">
+         <div class="alert alert-warning">
+           No se encontró el vehículo. Revisa que el enlace tenga <code>?id=</code>
+           y que el ID exista en <strong>data-autos.js</strong>.
+         </div>
+       </div>`;
+        return;
+    }
+
+    // 3) Datos base
+    const portada = auto.portada || auto.destacada || "";
+    const nombre  = auto.nombre || "Modelo";
+    const desc    = auto.descripcion_larga || auto.descripcion_corta || "Sin descripción.";
+    const sinIva  = Number(auto.precio) || 0;
+    const ivaVal  = sinIva * IVA;
+    const total   = sinIva + ivaVal;
+
+    // 4) Pintar Hero y título
+    $("#heroImg").attr("src", portada);
+    $("#carName").text(nombre);
+
+    // 5) Colores (pueden venir como objetos o strings)
+    const $box = $("#colorBox").empty();
+    (auto.colores || []).forEach((c, i) => {
+        const hex = typeof c === "string" ? c : (c.codigo || "#ccc");
+        const $b = $(`<button type="button" class="swatch border-0" aria-label="color ${i+1}"></button>`);
+        $b.css("background", hex)
+            .on("mouseenter", () => $("#featureImg").css("filter","saturate(120%)"))
+            .on("mouseleave", () => $("#featureImg").css("filter",""))
+            .on("click",      () => $b.addClass("ring").siblings().removeClass("ring"));
+        $box.append($b);
+    });
+
+    // 6) Descripción y precios
+    $("#featureImg").attr("src", portada);
+    $("#carDesc").text(desc);
+    const fmt = n => n.toLocaleString('en-US',{maximumFractionDigits:2}) + " USD";
+    $("#priceSinIva").text(fmt(sinIva));
+    $("#priceIva").text(fmt(ivaVal));
+    $("#priceTotal").text(fmt(total));
+    $("#ivaPct").text(Math.round(IVA*100) + "%");
+
+    // 7) Galería
+    const $g = $("#gallery").empty();
+    const fotos = auto.galeria && auto.galeria.length ? auto.galeria : [portada];
+    fotos.forEach(src => {
+        $g.append(`
+      <div class="col-6 col-md-4 col-lg-3">
+        <div class="gallery-item hoverable ratio ratio-4x3">
+          <img src="${src}" alt="Foto" />
+        </div>
+      </div>
+    `);
+    });
+
+    // 8) Hover suave
+    $(document).on("mouseenter", "img, .gallery-item, .swatch", function(){
+        $(this).addClass("shadow-sm");
+    }).on("mouseleave", "img, .gallery-item, .swatch", function(){
+        $(this).removeClass("shadow-sm");
+    });
+
+    // 9) Agregar al carrito
+    $("#btnAgregar").on("click", function(){
+        const item = { id: Number(auto.id), titulo: nombre, imagen: portada, precio: sinIva, cantidad: 1 };
+        const carrito = JSON.parse(localStorage.getItem("carrito")||"[]");
+        const i = carrito.findIndex(x=>x.id===item.id);
+        if(i>-1) carrito[i].cantidad += 1; else carrito.push(item);
+        localStorage.setItem("carrito", JSON.stringify(carrito));
+        $(this).prop("disabled", true).text("Añadido ✓");
+        setTimeout(()=>$(this).prop("disabled", false).text("Agregar al carrito"), 900);
+        const total = carrito.reduce((s,x)=>s+x.cantidad,0);
+        $("#badgeCarrito").text(total);
+    });
+
+    // 10) Contador carrito al entrar
+    const c = JSON.parse(localStorage.getItem("carrito")||"[]").reduce((s,x)=>s+x.cantidad,0);
+    $("#badgeCarrito").text(c);
+})();

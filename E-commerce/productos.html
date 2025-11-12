@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo - Concesionaria Los Jefes</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <!-- Hoja de estilos personalizada -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+<!-- ====== HEADER ====== -->
+<header class="site-header">
+    <div class="container header-row">
+        <a href="#" class="brand">
+            <img src="img/logo-los-jefes.png" alt="Concesionaria Los Jefes" class="brand__logo">
+            <span class="brand__text">Concesionaria Los Jefes</span>
+        </a>
+
+        <!-- Botón hamburguesa para móviles -->
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <!-- Menú de navegación -->
+        <nav class="site-nav" id="siteNav">
+            <a href="index.html" class="site-nav__link">Inicio</a>
+            <a href="#" class="site-nav__link">Modelos</a>
+            <a href="#" class="site-nav__link">Ofertas</a>
+            <a href="../../../../Downloads/Formulario.html" class="site-nav__link">Contacto</a>
+            <a href="carrito.html" class="site-nav__link" style="position: relative;">
+                🛒 Carrito
+                <span id="cart-count" class="cart-badge">0</span>
+            </a>
+        </nav>
+    </div>
+</header>
+
+<!-- ====== HERO ====== -->
+<section class="hero">
+    <div class="hero__media">
+        <img src="img/card1.jpg" alt="Catálogo Los Jefes">
+    </div>
+    <div class="hero__content container">
+        <h1 class="hero__title">Nuestros Modelos Exclusivos</h1>
+        <p class="hero__subtitle">Encuentra el vehículo perfecto para ti: lujo, potencia y elegancia en un solo lugar.</p>
+    </div>
+</section>
+
+<!-- ====== VEHICLES GRID ====== -->
+<section class="vehicles container">
+    <div class="section-head" style="text-align: center; margin-bottom: 28px;">
+        <h2>Catálogo de Vehículos</h2>
+        <p class="section-sub">Descubre nuestra exclusiva selección de automóviles premium</p>
+    </div>
+
+    <div class="vehicle-grid" id="productos">
+        <!-- Las tarjetas se generarán dinámicamente aquí con JavaScript -->
+    </div>
+</section>
+
+<!-- ====== FOOTER ====== -->
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div>
+                <img src="img/logo-los-jefes.jpg" alt="Concesionaria Los Jefes" class="footer-logo">
+                <p>Concesionaria Los Jefes — Potencia y estilo sobre ruedas.</p>
+            </div>
+            <div>
+                <h6>Enlaces</h6>
+                <a href="portada.html">Inicio</a><br>
+                <a href="#">Modelos</a><br>
+                <a href="#">Ofertas</a><br>
+                <a href="../../../../Downloads/Formulario.html">Contacto</a>
+            </div>
+            <div>
+                <h6>Contacto</h6>
+                <p>Quito, Ecuador<br>Tel: (02) 456 7890<br>Email: contacto@losjefes.com</p>
+            </div>
+        </div>
+        <p class="copy">© 2025 Concesionaria Los Jefes. Todos los derechos reservados.</p>
+    </div>
+</footer>
+
+<!-- Bootstrap 5 JS Bundle (incluye Popper) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+
+<!-- Sistema de carrito integrado -->
+<script>
+    // Array de productos
+    const listaProductos = [
+        {
+            id: 1,
+            titulo: "Deportivo Furia X90",
+            imagen: "img/3porsche.jpg",
+            precio: 150000,
+            descripcion: "Potencia extrema y diseño aerodinámico. 0-100 km/h en 3.2s. Disponible en rojo y negro.",
+            enlace: "detalle.html"
+        },
+        {
+            id: 2,
+            titulo: "SUV Aventura GT",
+            imagen: "img/3mazda.jpg",
+            precio: 75000,
+            descripcion: "Lujo y capacidad para toda la familia. Tracción 4x4, asientos de cuero y tecnología avanzada.",
+            enlace: "detalle.html"
+        },
+        {
+            id: 3,
+            titulo: "Clásico Leyenda 68",
+            imagen: "img/2toyota.jpg",
+            precio: 90000,
+            descripcion: "Un ícono restaurado a la perfección. Motor V8, pintura original y piezas de colección.",
+            enlace: "detalle.html"
+        },
+        {
+            id: 4,
+            titulo: "EcoDrive E7",
+            imagen: "img/1mazda.jpeg",
+            precio: 65000,
+            descripcion: "Auto 100% eléctrico con autonomía de 500 km. Carga rápida y diseño futurista.",
+            enlace: "detalle.html"
+        },
+        {
+            id: 5,
+            titulo: "Pickup Titan X",
+            imagen: "img/2toyota.jpg",
+            precio: 82000,
+            descripcion: "Potente y resistente. Ideal para trabajo pesado y aventuras extremas con estilo premium.",
+            enlace: "detalle.html"
+        }
+    ];
+
+    // Funciones del carrito
+    function obtenerCarrito() {
+        const carrito = localStorage.getItem('carrito');
+        return carrito ? JSON.parse(carrito) : [];
+    }
+
+    function guardarCarrito(carrito) {
+        localStorage.setItem('carrito', JSON.stringify(carrito));
+        actualizarContadorCarrito();
+    }
+
+    function actualizarContadorCarrito() {
+        const carrito = obtenerCarrito();
+        const total = carrito.reduce((sum, item) => sum + item.cantidad, 0);
+        const badge = document.getElementById('cart-count');
+        if (badge) {
+            badge.textContent = total;
+            badge.style.display = total > 0 ? 'flex' : 'none';
+        }
+    }
+
+    function agregarAlCarrito(idProducto) {
+        console.log('Agregando producto ID:', idProducto);
+
+        const producto = listaProductos.find(p => p.id === idProducto);
+
+        if (!producto) {
+            alert('Producto no encontrado');
+            return;
+        }
+
+        let carrito = obtenerCarrito();
+        const indiceExistente = carrito.findIndex(item => item.id === idProducto);
+
+        if (indiceExistente !== -1) {
+            carrito[indiceExistente].cantidad += 1;
+        } else {
+            carrito.push({
+                id: producto.id,
+                titulo: producto.titulo,
+                imagen: producto.imagen,
+                precio: producto.precio,
+                cantidad: 1
+            });
+        }
+
+        guardarCarrito(carrito);
+        mostrarMensaje('✅ Producto añadido al carrito');
+    }
+
+    function mostrarMensaje(mensaje) {
+        const div = document.createElement('div');
+        div.textContent = mensaje;
+        div.style.cssText = `
+        position: fixed;
+        top: 80px;
+        right: 20px;
+        background: #2f7a2f;
+        color: white;
+        padding: 15px 25px;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        z-index: 9999;
+        font-weight: 600;
+    `;
+
+        document.body.appendChild(div);
+
+        setTimeout(() => {
+            div.style.opacity = '0';
+            div.style.transition = 'opacity 0.3s';
+            setTimeout(() => div.remove(), 300);
+        }, 2000);
+    }
+
+    function formatearPrecio(precio) {
+        return `${precio.toLocaleString('en-US')} USD`;
+    }
+
+    function cargarProductos() {
+        console.log('Cargando productos...');
+        const contenedor = document.getElementById('productos');
+        if (!contenedor) {
+            console.error('No se encontró el contenedor #productos');
+            return;
+        }
+
+        let htmlProductos = '';
+
+        for(let i = 0; i < listaProductos.length; i++) {
+            const producto = listaProductos[i];
+
+            htmlProductos += `
+            <article class="vehicle-card">
+                <img src="${producto.imagen}"
+                     alt="${producto.titulo}"
+                     class="vehicle-card__img">
+                <div class="vehicle-card__body">
+                    <h3 class="vehicle-card__title">${producto.titulo}</h3>
+                    <p class="vehicle-card__price">${formatearPrecio(producto.precio)}</p>
+                    <p style="margin-bottom: 14px; color: #5b6b7a; font-size: 14px;">${producto.descripcion}</p>
+                    <div class="vehicle-card__actions" style="display: flex; gap: 8px; flex-direction: column;">
+                        <button class="btn-add-cart" onclick="agregarAlCarrito(${producto.id})">
+                            <span style="font-size: 18px;">+</span> Añadir al carrito
+                        </button>
+                        <a href="detalle.html?id=${producto.id}"
+                            class="btn btn--accent"
+                            style="width:100%; text-align:center;">
+                            Ver más detalles
+                        </a>
+
+                    </div>
+                </div>
+            </article>
+        `;
+        }
+
+        contenedor.innerHTML = htmlProductos;
+        console.log('Productos cargados:', listaProductos.length);
+    }
+
+    // Inicializar
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log('DOM cargado');
+        actualizarContadorCarrito();
+        cargarProductos();
+    });
+</script>
+
+<style>
+    .cart-badge {
+        position: absolute;
+        top: -8px;
+        right: -10px;
+        background: #d62828;
+        color: white;
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        font-size: 11px;
+        font-weight: bold;
+    }
+
+    .btn-add-cart {
+        background: #2f7a2f;
+        color: white;
+        border: none;
+        padding: 8px 16px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: all 0.3s;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .btn-add-cart:hover {
+        background: #267026;
+        transform: translateY(-2px);
+    }
+
+    .btn-add-cart:active {
+        transform: scale(0.95);
+    }
+</style>
+
+<!-- Script para el menú móvil -->
+<script>
+    // Toggle menú móvil
+    const navToggle = document.getElementById('navToggle');
+    const siteNav = document.getElementById('siteNav');
+
+    if (navToggle) {
+        navToggle.addEventListener('click', function() {
+            siteNav.classList.toggle('is-open');
+            document.body.classList.toggle('no-scroll');
+        });
+    }
+
+    // Cerrar menú al hacer click en un enlace
+    const navLinks = document.querySelectorAll('.site-nav__link');
+    navLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            siteNav.classList.remove('is-open');
+            document.body.classList.remove('no-scroll');
+        });
+    });
+</script>
+</body>
+</html>
