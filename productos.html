@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo - Concesionaria Los Jefes</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Hoja de estilos personalizada -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+<!-- ====== HEADER ====== -->
+<header class="site-header">
+    <div class="container header-row">
+        <a href="#" class="brand">
+            <img src="img/los%20jefes.jpg" alt="Concesionaria Los Jefes" class="brand__logo">
+            <span class="brand__text">Concesionaria Los Jefes</span>
+        </a>
+
+        <!-- Botón hamburguesa para móviles -->
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <!-- Menú de navegación -->
+        <nav class="site-nav" id="siteNav">
+            <a href="index.html" class="site-nav__link">Inicio</a>
+            <a href="#" class="site-nav__link">Modelos</a>
+            <a href="#" class="site-nav__link">Ofertas</a>
+            <a href="Formulario.html" class="site-nav__link">Contacto</a>
+        </nav>
+    </div>
+</header>
+
+<!-- ====== HERO ====== -->
+<section class="hero">
+    <div class="hero__media">
+        <img src="img/1porsche.jpg" alt="Catálogo Los Jefes">
+    </div>
+    <div class="hero__content container">
+        <h1 class="hero__title">Nuestros Modelos Exclusivos</h1>
+        <p class="hero__subtitle">Encuentra el vehículo perfecto para ti: lujo, potencia y elegancia en un solo lugar.</p>
+    </div>
+</section>
+
+<!-- ====== VEHICLES GRID ====== -->
+<section class="vehicles container">
+    <div class="section-head" style="text-align: center; margin-bottom: 28px;">
+        <h2>Catálogo de Vehículos</h2>
+        <p class="section-sub">Descubre nuestra exclusiva selección de automóviles premium</p>
+    </div>
+
+    <div class="vehicle-grid" id="productos">
+        <!-- Las tarjetas se generarán dinámicamente aquí con JavaScript -->
+        <div style="grid-column: 1/-1; text-align: center; padding: 40px;">
+            <p style="color: #5b6b7a;">Cargando vehículos...</p>
+        </div>
+    </div>
+</section>
+
+<!-- ====== FOOTER ====== -->
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div>
+                <img src="img/los%20jefes.jpg" alt="Concesionaria Los Jefes" class="footer-logo">
+                <p>Concesionaria Los Jefes — Potencia y estilo sobre ruedas.</p>
+            </div>
+            <div>
+                <h6>Enlaces</h6>
+                <a href="portada.html">Inicio</a><br>
+                <a href="#">Modelos</a><br>
+                <a href="#">Ofertas</a><br>
+                <a href="Formulario.html">Contacto</a>
+            </div>
+            <div>
+                <h6>Contacto</h6>
+                <p>Quito, Ecuador<br>Tel: (02) 456 7890<br>Email: contacto@losjefes.com</p>
+            </div>
+        </div>
+        <p class="copy">© 2025 Concesionaria Los Jefes. Todos los derechos reservados.</p>
+    </div>
+</footer>
+
+<!-- Bootstrap 5 JS Bundle (incluye Popper) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+
+<!-- Script de productos -->
+<script src="productos.js"></script>
+
+<!-- Script para el menú móvil -->
+<script>
+    // Toggle menú móvil
+    const navToggle = document.getElementById('navToggle');
+    const siteNav = document.getElementById('siteNav');
+
+    if (navToggle) {
+        navToggle.addEventListener('click', function() {
+            siteNav.classList.toggle('is-open');
+            document.body.classList.toggle('no-scroll');
+        });
+    }
+
+    // Cerrar menú al hacer click en un enlace
+    const navLinks = document.querySelectorAll('.site-nav__link');
+    navLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            siteNav.classList.remove('is-open');
+            document.body.classList.remove('no-scroll');
+        });
+    });
+</script>
+</body>
+</html>
