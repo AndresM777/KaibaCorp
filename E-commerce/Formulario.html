@@ -4,141 +4,570 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contacto - Concesionaria Los Jefes</title>
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <script src="../jquery-3.7.1.min.js"></script>
+
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background-color: #f7f9fc;
+            color: #222;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* CABECERA */
+        .site-header {
+            background: #0a2342;
+            color: #fff;
+            padding: 0.5rem 0 1rem 0;
+            position: relative;
+        }
+
+        .header-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 90%;
+            margin: 0 auto;
+            flex-wrap: wrap;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+
+        .brand__logo {
+            width: 110px;
+            height: auto;
+        }
+
+        .brand__text {
+            color: white;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .brand__text:hover {
+            color: #1a73e8;
+        }
+
+        /* BARRA DE BÚSQUEDA */
+        .search-bar {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .search-bar input {
+            width: 60%;
+            padding: 0.6rem 2.2rem 0.6rem 1rem;
+            border-radius: 20px;
+            border: none;
+            font-size: 1rem;
+            outline: none;
+            box-shadow: 0 0 0 2px transparent;
+            transition: box-shadow 0.2s ease;
+        }
+
+        .search-bar input:focus {
+            box-shadow: 0 0 0 2px #1a73e8;
+        }
+
+        .search-bar button {
+            position: absolute;
+            right: 20%;
+            background: none;
+            border: none;
+            color: #0a2342;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .search-bar button:hover {
+            color: #1a73e8;
+        }
+
+        /* NAV */
+        .site-nav {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .site-nav__link {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .site-nav__link:hover {
+            color: #1a73e8;
+        }
+
+        /* RESULTADO DE BÚSQUEDA */
+        .search-result {
+            text-align: center;
+            color: white;
+            font-size: 0.95rem;
+            font-style: italic;
+            margin-top: 0.5rem;
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* HERO CON TEXTO */
+        .hero {
+            position: relative;
+            width: 100%;
+            height: auto;
+        }
+
+        .hero__image {
+            width: 100%;
+            height: 420px;
+            object-fit: cover;
+            filter: brightness(0.8);
+            display: block;
+            border-bottom: 3px solid #1a73e8;
+        }
+
+        .hero__overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+        }
+
+        .hero__title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero__subtitle {
+            font-size: 1.1rem;
+        }
+
+        /* CONTACTO */
+        .contact {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            width: 90%;
+            margin: 2rem auto;
+        }
+
+        .contact__form, .contact__aside {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .contact__form {
+            flex: 2;
+        }
+
+        .contact__aside {
+            flex: 1;
+            border-left: 4px solid #1a73e8;
+        }
+
+        .field {
+            margin-bottom: 1.2rem;
+        }
+
+        .field label {
+            font-weight: 600;
+            color: #0a2342;
+        }
+
+        input, textarea, select {
+            width: 100%;
+            padding: 0.9rem;
+            margin-top: 0.5rem;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+            font-size: 1rem;
+        }
+
+        select {
+            font-size: 1.1rem;
+            height: 3rem;
+        }
+
+        .btn--primary {
+            background-color: #1a73e8;
+            color: white;
+            padding: 0.8rem 1.8rem;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .btn--primary:hover {
+            background-color: #0d47a1;
+        }
+
+        .error-msg {
+            color: red;
+            font-size: 0.9rem;
+            margin-top: 0.3rem;
+            display: block;
+        }
+
+        footer {
+            background-color: #0a2342;
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        /* ASIDE */
+        .aside-card {
+            background: #ffffff;
+            border-radius: 10px;
+            padding: 1.2rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            margin-bottom: 1.5rem;
+        }
+
+        .aside-card h4 {
+            color: #1a73e8;
+            font-weight: 700;
+            margin-bottom: 0.6rem;
+        }
+
+        .schedule {
+            background: #f0f4fa;
+            border-radius: 10px;
+            padding: 1rem;
+            margin-top: 0.8rem;
+        }
+
+        .time-slot {
+            background: #fff;
+            border: 1px solid #1a73e8;
+            border-radius: 8px;
+            padding: 0.6rem;
+            margin: 0.3rem 0;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .time-slot:hover {
+            background: #1a73e8;
+            color: #fff;
+        }
+
+        .selected {
+            background: #1a73e8 !important;
+            color: #fff !important;
+        }
+
+        .book-btn {
+            margin-top: 1rem;
+            background: #1a73e8;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 0.7rem 1.2rem;
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .book-btn:hover {
+            background: #0d47a1;
+        }
+
+        .contact__list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .contact__list li {
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .contact__list a {
+            color: #1a73e8;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .contact__list a:hover {
+            text-decoration: underline;
+        }
+
+        /* 📱 RESPONSIVE */
+        @media (max-width: 768px) {
+            .header-row {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                gap: 1rem;
+            }
+
+            .site-nav {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .site-nav__link {
+                display: block;
+                width: 100%;
+                background: #1a73e8;
+                padding: 0.5rem 1rem;
+                border-radius: 8px;
+                color: white;
+            }
+
+            .search-bar input {
+                width: 85%;
+                font-size: 0.9rem;
+            }
+
+            .search-bar button {
+                right: 8%;
+            }
+
+            .hero__image {
+                height: 250px;
+            }
+
+            .hero__title {
+                font-size: 1.4rem;
+            }
+
+            .hero__subtitle {
+                font-size: 0.9rem;
+            }
+
+            .contact {
+                flex-direction: column;
+            }
+
+            .contact__form, .contact__aside {
+                width: 100%;
+                box-shadow: none;
+            }
+
+            footer {
+                font-size: 0.9rem;
+                padding: 1rem;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-<!-- ====== HEADER ====== -->
 <header class="site-header">
     <div class="container header-row">
         <a href="#" class="brand">
             <img src="img/logo-los-jefes.png" alt="Concesionaria Los Jefes" class="brand__logo">
             <span class="brand__text">Concesionaria Los Jefes</span>
         </a>
+
+        <!-- 🔍 Barra de búsqueda -->
+        <div class="search-bar">
+            <input type="text" id="busqueda" placeholder="Buscar modelos o servicios...">
+            <button id="btnBuscar" title="Buscar">🔍</button>
+        </div>
+
         <nav class="site-nav">
             <a href="portada.html" class="site-nav__link">Inicio</a>
-            <a href="Catalogo.html" class="site-nav__link">Modelos</a>
-            <a href="#" class="site-nav__link">Ofertas</a>
+            <a href="Catalogo.html" class="site-nav__link">Catálogo</a>
             <a href="#" class="site-nav__link">Contacto</a>
         </nav>
     </div>
+    <p class="search-result" id="resultadoBusqueda"></p>
 </header>
 
-<!-- ====== HERO ====== -->
 <section class="hero">
-    <div class="hero__media">
-        <img src="img/card4.jpg" alt="Contacto Concesionaria Los Jefes">
-    </div>
-    <div class="hero__content container">
-        <h1 class="hero__title"><i class="fa-solid fa-car"></i> El poder sobre cuatro ruedas</h1>
+    <img src="img/card4.jpg" alt="Contacto Concesionaria Los Jefes" class="hero__image">
+    <div class="hero__overlay">
+        <h1 class="hero__title">El poder sobre cuatro ruedas</h1>
         <p class="hero__subtitle">Estamos disponibles para atender tus dudas o agendar una cita personalizada.</p>
     </div>
 </section>
 
-<!-- ====== CONTACT SECTION ====== -->
-<section class="contact container">
-    <div class="contact__grid">
+<section class="contact">
+    <!-- FORMULARIO -->
+    <div class="contact__form">
+        <h3>Formulario de Contacto</h3>
+        <p>Completa el siguiente formulario y uno de nuestros asesores se comunicará contigo.</p>
 
-        <!-- FORMULARIO -->
-        <div class="contact__form">
-            <h3>Formulario de Contacto</h3>
-            <p>Completa el siguiente formulario y uno de nuestros asesores se comunicará contigo.</p>
+        <form id="contactForm" novalidate>
+            <div class="field">
+                <label>Nombre completo</label>
+                <input type="text" id="nombre" placeholder="Tu nombre completo">
+                <small class="error-msg"></small>
+            </div>
 
-            <form id="contactForm">
-                <div class="field">
-                    <label>Nombre completo</label>
-                    <input type="text" placeholder="Tu nombre completo" required>
-                </div>
+            <div class="field">
+                <label>Correo electrónico</label>
+                <input type="email" id="correo" placeholder="correo@ejemplo.com">
+                <small class="error-msg"></small>
+            </div>
 
-                <div class="field">
-                    <label>Correo electrónico</label>
-                    <input type="email" placeholder="correo@ejemplo.com" required>
-                </div>
+            <div class="field">
+                <label>Número de teléfono</label>
+                <input type="tel" id="telefono" placeholder="+593 999 999 999">
+                <small class="error-msg"></small>
+            </div>
 
-                <div class="field">
-                    <label>Número de teléfono</label>
-                    <input type="tel" placeholder="+593 999 999 999" required>
-                </div>
+            <div class="field">
+                <label>Motivo de contacto</label>
+                <select id="motivo">
+                    <option selected disabled>Selecciona una opción</option>
+                    <option value="cotizacion">Cotización</option>
+                    <option value="soporte">Soporte técnico</option>
+                    <option value="prueba">Prueba de manejo</option>
+                    <option value="otro">Otro</option>
+                </select>
+                <small class="error-msg"></small>
+            </div>
 
-                <div class="field">
-                    <label>Motivo de contacto</label>
-                    <select required>
-                        <option selected disabled>Selecciona una opción</option>
-                        <option value="cotizacion">Cotización</option>
-                        <option value="soporte">Soporte técnico</option>
-                        <option value="prueba">Prueba de manejo</option>
-                        <option value="otro">Otro</option>
-                    </select>
-                </div>
+            <div class="field">
+                <label>Mensaje</label>
+                <textarea id="mensaje" rows="4" placeholder="Escribe tu mensaje..."></textarea>
+                <small class="error-msg"></small>
+            </div>
 
-                <div class="field">
-                    <label>Mensaje</label>
-                    <textarea rows="4" placeholder="Escribe tu mensaje..." required></textarea>
-                </div>
+            <button type="submit" class="btn--primary">Enviar mensaje</button>
+        </form>
 
-                <button type="submit" class="btn btn--primary">Enviar mensaje</button>
-                <div class="form-note" id="msg"></div>
-            </form>
-        </div>
+        <div class="loading" style="display:none;">⏳ Enviando...</div>
+        <div class="respuesta" style="display:none;"></div>
+    </div>
 
-        <!-- INFORMACIÓN DE CONTACTO -->
-        <aside class="contact__aside">
+    <!-- ASIDE DERECHO -->
+    <aside class="contact__aside">
+        <div class="aside-card">
             <h4>Contáctanos directamente</h4>
             <ul class="contact__list">
-                <li><i class="fab fa-whatsapp"></i> WhatsApp: <a href="#" style="color: var(--blue-700); font-weight:600;">Haz clic aquí</a></li>
-                <li><i class="fa-solid fa-phone"></i> Tel: <strong>(02) 456 7890</strong></li>
-                <li><i class="fa-solid fa-envelope"></i> Email: <a href="mailto:contacto@losjefes.com" style="color: var(--blue-700); font-weight:600;">contacto@losjefes.com</a></li>
+                <li>WhatsApp: <a href="#">Haz clic aquí</a></li>
+                <li>Tel: <strong>(02) 456 7890</strong></li>
+                <li>Email: <a href="mailto:contacto@losjefes.com">contacto@losjefes.com</a></li>
             </ul>
+        </div>
 
-            <div class="aside-card">
-                <h4><i class="fa-solid fa-location-dot"></i> Ubicación</h4>
-                <p>Quito, Ecuador<br>Av. Amazonas y Colón<br>Horario: Lunes a Sábado, 9:00 a 18:00</p>
+        <div class="aside-card">
+            <h4>Agenda tu prueba de manejo</h4>
+            <p>Elige un horario disponible:</p>
+            <div class="schedule">
+                <div class="time-slot">Lunes 10:00 - 11:00</div>
+                <div class="time-slot">Martes 15:00 - 16:00</div>
+                <div class="time-slot">Miércoles 11:00 - 12:00</div>
+                <div class="time-slot">Jueves 14:00 - 15:00</div>
+                <div class="time-slot">Viernes 09:00 - 10:00</div>
             </div>
-        </aside>
-
-    </div>
+            <button class="book-btn">Agendar cita</button>
+        </div>
+    </aside>
 </section>
 
-<!-- ====== FOOTER ====== -->
-<footer class="site-footer">
-    <div class="footer-grid">
-        <div>
-            <img src="img/logo-los-jefes.png" alt="Concesionaria Los Jefes" class="footer-logo">
-            <p>Concesionaria Los Jefes — Elegancia, potencia y estilo.</p>
-        </div>
-        <div>
-            <h6>Enlaces</h6>
-            <a href="portada.html">Inicio</a><br>
-            <a href="Catalogo.html">Modelos</a><br>
-            <a href="#">Ofertas</a><br>
-            <a href="#">Contacto</a>
-        </div>
-        <div>
-            <h6>Atención</h6>
-            <p>Llámanos al <strong>(02) 456 7890</strong><br>o escríbenos a <strong>contacto@losjefes.com</strong></p>
-        </div>
-    </div>
-    <p class="copy">© 2025 Concesionaria Los Jefes — Todos los derechos reservados.</p>
+<footer>
+    <p>© 2025 Concesionaria Los Jefes — Todos los derechos reservados.</p>
 </footer>
 
-<!-- ====== SCRIPT ====== -->
 <script>
-    // Efecto de ocultar hero al hacer scroll
-    const hero = document.querySelector('.hero');
-    window.addEventListener('scroll', () => {
-        hero.classList.toggle('hidden', window.scrollY > 120);
-    });
+    $(document).ready(function(){
 
-    // Envío del formulario
-    const form = document.getElementById("contactForm");
-    const msg = document.getElementById("msg");
-    form.addEventListener("submit", (e) => {
-        e.preventDefault();
-        msg.textContent = "✅ Tu mensaje ha sido enviado correctamente. ¡Gracias por contactarnos!";
-        form.reset();
-        setTimeout(() => msg.textContent = "", 4000);
+        // 🔍 Simulación de búsqueda
+        $("#btnBuscar").on("click", function(){
+            const texto = $("#busqueda").val().trim();
+            const $resultado = $("#resultadoBusqueda");
+
+            $resultado.text("Buscando...").fadeIn();
+
+            setTimeout(function(){
+                if(texto === ""){
+                    $resultado.text("Por favor, escribe algo para buscar.");
+                } else {
+                    $resultado.text("No se encontró ningún resultado para: \"" + texto + "\"");
+                }
+            }, 1500);
+        });
+
+        // Validación del formulario
+        $("#contactForm").on("submit", function(e){
+            e.preventDefault();
+            let valid = true;
+            $(".error-msg").text("");
+
+            if($("#nombre").val().trim() === ""){
+                $("#nombre").next(".error-msg").text("Por favor, ingresa tu nombre completo.");
+                valid = false;
+            }
+
+            const correo = $("#correo").val().trim();
+            if(correo === "" || !correo.includes("@")){
+                $("#correo").next(".error-msg").text("Por favor, ingresa un correo válido.");
+                valid = false;
+            }
+
+            const telefono = $("#telefono").val().trim();
+            if(telefono === ""){
+                $("#telefono").next(".error-msg").text("Por favor, ingresa tu número de teléfono.");
+                valid = false;
+            }
+
+            if($("#motivo").val() === null){
+                $("#motivo").next(".error-msg").text("Selecciona un motivo de contacto.");
+                valid = false;
+            }
+
+            if($("#mensaje").val().trim() === ""){
+                $("#mensaje").next(".error-msg").text("Por favor, escribe tu mensaje.");
+                valid = false;
+            }
+
+            if(valid){
+                $(".respuesta").hide();
+                $(".loading").show().text("⏳ Enviando...");
+                setTimeout(function(){
+                    $(".loading").hide();
+                    $(".respuesta").css("color","green").show().text("✅ ¡Mensaje enviado con éxito!");
+                    $("#contactForm")[0].reset();
+                },1500);
+            }
+        });
+
+        // Agenda — selección única
+        $(".time-slot").on("click", function(){
+            $(".time-slot").removeClass("selected");
+            $(this).addClass("selected");
+        });
+
+        $(".book-btn").on("click", function(){
+            const selected = $(".time-slot.selected").text();
+            if(selected){
+                alert("✅ Has agendado tu prueba de manejo en: " + selected);
+            } else {
+                alert("⚠️ Por favor, selecciona un horario antes de agendar.");
+            }
+        });
     });
 </script>
 
