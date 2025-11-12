@@ -1,7 +1,7 @@
 # KaibaCorp
 E-Commerce Concesionario "Los Jefes" Melany Analuisa/Gustabo Venalcazar/Mateo Morales/Rodrigo Lucano
 # Especificaciones
-- Portada - Gustabo Venalcazar
+- Portada - Gustabo Benalcazar
 - Productos - Rodrigo Lucano
 - Carrito - Rodrigo Lucano
 - Detalle productos - Melany Analuisa
