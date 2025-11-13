@@ -279,7 +279,7 @@ function cargarProductos() {
     for(let i = 0; i < listaProductos.length; i++) {
         const producto = listaProductos[i];
 
-        // Crear el HTML de cada tarjeta usando las clases de styles.css
+        // Crear el HTML de cada tarjeta usando las clases de
         htmlProductos += `
             <article class="vehicle-card">
                 <img src="${producto.imagen}" 

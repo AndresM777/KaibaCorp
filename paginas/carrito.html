@@ -1,377 +1,259 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Carrito de Compras - Concesionaria Los Jefes</title>
-
-    <!-- Bootstrap 5 CSS -->
-    <link href="../bootstrap.min.css" rel="stylesheet">
-
-    <!-- jQuery -->
-    <script src="../jquery-3.7.1.min.js"></script>
-
-    <!-- Hoja de estilos personalizada -->
-    <link rel="stylesheet" href="../assets/styles.css">
-
-    <style>
-        .cart-page {
-            min-height: calc(100vh - 400px);
-            padding: 40px 0;
-        }
-
-        .cart-item {
-            background: white;
-            border-radius: 14px;
-            padding: 20px;
-            margin-bottom: 15px;
-            display: grid;
-            grid-template-columns: 100px 1fr auto auto auto;
-            gap: 20px;
-            align-items: center;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-            transition: all 0.3s;
-        }
-
-        .cart-item:hover {
-            box-shadow: 0 6px 20px rgba(0,0,0,0.12);
-        }
-
-        .cart-item__img {
-            width: 100px;
-            height: 80px;
-            object-fit: cover;
-            border-radius: 10px;
-        }
-
-        .cart-item__info h4 {
-            margin: 0 0 8px 0;
-            font-size: 18px;
-            color: #142231;
-        }
-
-        .cart-item__price {
-            color: #163a63;
-            font-weight: 600;
-            margin: 0;
-        }
-
-        .cart-item__controls {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-        }
-
-        .btn-qty {
-            width: 35px;
-            height: 35px;
-            border: 2px solid #163a63;
-            background: white;
-            border-radius: 8px;
-            font-weight: bold;
-            color: #163a63;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-
-        .btn-qty:hover {
-            background: #163a63;
-            color: white;
-        }
-
-        .qty-input {
-            width: 60px;
-            height: 35px;
-            text-align: center;
-            border: 2px solid #e5ebf2;
-            border-radius: 8px;
-            font-weight: 600;
-        }
-
-        .cart-item__subtotal {
-            font-size: 20px;
-            color: #d62828;
-            min-width: 120px;
-            text-align: right;
-        }
-
-        .btn-remove {
-            width: 40px;
-            height: 40px;
-            border: none;
-            background: #fef2f2;
-            color: #d62828;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 18px;
-            transition: all 0.2s;
-        }
-
-        .btn-remove:hover {
-            background: #d62828;
-            color: white;
-        }
-
-        .cart-summary {
-            background: white;
-            border-radius: 14px;
-            padding: 25px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-            position: sticky;
-            top: 100px;
-        }
-
-        .cart-summary h3 {
-            margin: 0 0 20px 0;
-            color: #142231;
-        }
-
-        .summary-row {
-            display: flex;
-            justify-content: space-between;
-            padding: 12px 0;
-            border-bottom: 1px solid #e5ebf2;
-        }
-
-        .summary-row:last-child {
-            border-bottom: none;
-            font-size: 20px;
-            font-weight: bold;
-            color: #d62828;
-            padding-top: 20px;
-            margin-top: 10px;
-            border-top: 2px solid #e5ebf2;
-        }
-
-        .checkout-form {
-            background: white;
-            border-radius: 14px;
-            padding: 25px;
-            margin-top: 20px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-        }
-
-        .checkout-form h3 {
-            margin: 0 0 20px 0;
-            color: #142231;
-        }
-
-        .form-group {
-            margin-bottom: 15px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-            color: #142231;
-            font-weight: 600;
-        }
-
-        .form-group input {
-            width: 100%;
-            padding: 12px;
-            border: 2px solid #e5ebf2;
-            border-radius: 8px;
-            font-size: 15px;
-        }
-
-        .form-group input:focus {
-            outline: none;
-            border-color: #163a63;
-        }
-
-        .cart-badge {
-            position: absolute;
-            top: -8px;
-            right: -10px;
-            background: #d62828;
-            color: white;
-            border-radius: 50%;
-            width: 20px;
-            height: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 11px;
-            font-weight: bold;
-        }
-
-        @media (max-width: 768px) {
-            .cart-item {
-                grid-template-columns: 80px 1fr;
-                gap: 15px;
-            }
-
-            .cart-item__img {
-                width: 80px;
-                height: 60px;
-            }
-
-            .cart-item__controls,
-            .cart-item__subtotal,
-            .btn-remove {
-                grid-column: 1 / -1;
-            }
-
-            .cart-item__controls {
-                justify-content: center;
-            }
-
-            .cart-item__subtotal {
-                text-align: center;
-            }
-        }
-    </style>
+    <link href="/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="/assets/styles.css" />
+    <meta name="theme-color" content="#0e2a46">
 </head>
 
-<body>
-
-<!-- ====== HEADER ====== -->
-<header class="site-header">
-    <div class="container header-row">
-        <a href="#" class="brand">
-            <img src="../assets/img/los%20jefes.jpg" alt="Concesionaria Los Jefes" class="brand__logo">
-            <span class="brand__text">Concesionaria Los Jefes</span>
-        </a>
-
-        <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-
-        <nav class="site-nav" id="siteNav">
-            <a href="portada.html" class="site-nav__link">Inicio</a>
-            <a href="productos.html" class="site-nav__link">Modelos</a>
-            <a href="#" class="site-nav__link">Ofertas</a>
-            <a href="Formulario.html" class="site-nav__link">Contacto</a>
-            <a href="carrito.html" class="site-nav__link" style="position: relative;">
-                🛒 Carrito
-                <span id="cart-count" class="cart-badge">0</span>
+<body class="d-flex flex-column min-vh-100">
+<header class="bg-brand-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-brand-dark py-1">
+        <div class="container">
+            <a class="navbar-brand d-flex flex-column align-items-center text-center" href="portada.html">
+                <img src="/assets/img/logo.png" alt="Concesionaria Los Jefes" class="brand-logo">
+                <span class="lh-1 mt-1">
+            <small class="text-uppercase fw-semibold opacity-75 d-block">Concesionaria</small>
+            <strong class="fs-5 text-white d-block">Los Jefes</strong>
+          </span>
             </a>
-        </nav>
-    </div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#mainNavbar" aria-controls="mainNavbar"
+                    aria-expanded="false" aria-label="Menú">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNavbar">
+                <form class="navbar-search d-flex mx-lg-auto my-3 my-lg-0">
+                    <input class="form-control search-input me-2" type="search"
+                           placeholder="Buscar modelos">
+                    <button class="btn btn-danger px-4" type="submit">Buscar</button>
+                </form>
+                <ul class="navbar-nav ms-lg-3 align-items-lg-center gap-3">
+                    <li class="nav-item"><a class="nav-link" href="portada.html">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="productos.html">Modelos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="Formulario.html">Contacto</a></li>
+                    <li class="nav-item ms-4 position-relative">
+                        <a class="nav-link p-0 d-inline-flex align-items-center active" aria-current="page" href="carrito.html">
+                            <i class="bi bi-cart3 nav-icon"></i>
+                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"> 2
+                            </span>
+                        </a>
+                    </li>
+                    <li class="nav-item ms-3">
+                        <a class="nav-link p-0 d-inline-flex align-items-center" href="#">
+                            <i class="bi bi-person-circle nav-icon"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 </header>
 
-<!-- ====== CARRITO ====== -->
-<section class="cart-page">
+<main class="flex-grow-1 py-5">
     <div class="container">
-        <div class="section-head" style="text-align: center; margin-bottom: 40px;">
-            <h2>🛒 Tu Carrito de Compras</h2>
-            <p class="section-sub">Revisa tus vehículos seleccionados</p>
-        </div>
+        <h1 class="h2 fw-bold mb-4">Tu Carrito de Compras</h1>
 
-        <div class="row">
-            <!-- Lista de productos -->
-            <div class="col-lg-8">
-                <div id="cart-items">
-                    <!-- Los productos se cargarán aquí dinámicamente -->
+        <div class="row g-4">
+
+            <div class="col-lg-7">
+                <div id="cartItemsContainer">
+
+                    <div class="card cart-item-card shadow-sm mb-3">
+                        <div class="card-body p-3">
+                            <div class="row g-3 align-items-center">
+
+                                <div class="col-3 col-md-2">
+                                    <img src="/assets/img/3mazda.jpg" class="img-fluid rounded" alt="Toyota Supra 2025">
+                                </div>
+
+                                <div class="col-5 col-md-5">
+                                    <h5 class="fw-bold mb-1 fs-6">Toyota Supra 2025</h5>
+                                    <p class="small text-muted mb-0">Color: Blanco Polar</p>
+                                    <p class="small text-muted mb-0">Unidad: 0 km</p>
+                                </div>
+
+                                <div class="col-4 col-md-2 d-flex justify-content-center">
+                                    <div class="input-group input-group-sm" style="width: 110px;">
+                                        <button class="btn btn-outline-secondary btn-minus" type="button"><i class="bi bi-dash"></i></button>
+                                        <input type="text" class="form-control text-center quantity-input" value="1" readonly>
+                                        <button class="btn btn-outline-secondary btn-plus" type="button"><i class="bi bi-plus"></i></button>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 col-md-3 text-end d-flex flex-column flex-md-row justify-content-end align-items-center gap-3 mt-3 mt-md-0">
+                                    <strong class="text-danger fs-5">$45,900.00</strong>
+                                    <button class="btn btn-sm btn-outline-danger btn-remove-item" type="button" title="Eliminar artículo">
+                                        <i class="bi bi-trash fs-5"></i>
+                                    </button>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card cart-item-card shadow-sm mb-3">
+                        <div class="card-body p-3">
+                            <div class="row g-3 align-items-center">
+
+                                <div class="col-3 col-md-2">
+                                    <img src="/assets/img/3porsche.jpg" class="img-fluid rounded" alt="Porsche 911 Turbo S">
+                                </div>
+
+                                <div class="col-5 col-md-5">
+                                    <h5 class="fw-bold mb-1 fs-6">Porsche 911 Turbo S</h5>
+                                    <p class="small text-muted mb-0">Color: Gris Oscuro</p>
+                                    <p class="small text-muted mb-0">Unidad: Usada (15,000 km)</p>
+                                </div>
+
+                                <div class="col-4 col-md-2 d-flex justify-content-center">
+                                    <div class="input-group input-group-sm" style="width: 110px;">
+                                        <button class="btn btn-outline-secondary btn-minus" type="button"><i class="bi bi-dash"></i></button>
+                                        <input type="text" class="form-control text-center quantity-input" value="1" readonly>
+                                        <button class="btn btn-outline-secondary btn-plus" type="button"><i class="bi bi-plus"></i></button>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 col-md-3 text-end d-flex flex-column flex-md-row justify-content-end align-items-center gap-3 mt-3 mt-md-0">
+                                    <strong class="text-danger fs-5">$235,000.00</strong>
+                                    <button class="btn btn-sm btn-outline-danger btn-remove-item" type="button" title="Eliminar artículo">
+                                        <i class="bi bi-trash fs-5"></i>
+                                    </button>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
 
-                <div style="margin-top: 20px; display: flex; gap: 10px;">
-                    <button class="btn btn--ghost" onclick="vaciarCarrito()">🗑️ Vaciar carrito</button>
-                    <a href="productos.html" class="btn btn--primary">← Seguir comprando</a>
-                </div>
+                <a href="productos.html" class="btn btn-link text-decoration-none mt-3">
+                    <i class="bi bi-arrow-left me-1"></i> Continuar comprando
+                </a>
+
             </div>
 
-            <!-- Resumen del carrito -->
-            <div class="col-lg-4">
-                <div class="cart-summary">
-                    <h3>Resumen de compra</h3>
-
-                    <div class="summary-row">
-                        <span>Subtotal:</span>
-                        <strong id="subtotal">$0.00</strong>
+            <div class="col-lg-5">
+                <div class="card shadow border-0 sticky-top" style="top: 20px;">
+                    <div class="card-header bg-brand-dark text-white fw-bold">
+                        Resumen del Pedido
                     </div>
+                    <div class="card-body">
 
-                    <div class="summary-row">
-                        <span>IVA (15%):</span>
-                        <strong id="iva">$0.00</strong>
+                        <div class="d-flex justify-content-between mb-2">
+                            <span>Subtotal (2 artículos)</span>
+                            <strong id="subtotalValue">$280,900.00</strong>
+                        </div>
+
+                        <div class="d-flex justify-content-between mb-2 small text-muted">
+                            <span>Impuestos (IVA 15%)</span>
+                            <strong id="taxValue">$42,135.00</strong>
+                        </div>
+
+                        <div class="d-flex justify-content-between mb-2 small text-muted">
+                            <span>Gastos de Entrega</span>
+                            <strong id="deliveryFee">Calculado en el checkout</strong>
+                        </div>
+
+                        <hr class="my-3" />
+
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="fs-4 fw-semibold">Total a Pagar</span>
+                            <strong id="totalValue" class="fs-3 text-danger fw-bolder">$323,035.00</strong>
+                        </div>
+
+                        <div class="d-grid mt-4">
+                            <a href="Formulario.html" class="btn btn-danger btn-lg fw-bold">
+                                <i class="bi bi-credit-card me-2"></i> Finalizar Compra
+                            </a>
+                        </div>
                     </div>
-
-                    <div class="summary-row">
-                        <span>Total:</span>
-                        <strong id="total">$0.00</strong>
-                    </div>
-                </div>
-
-                <!-- Formulario de checkout -->
-                <div class="checkout-form">
-                    <h3>Datos de contacto</h3>
-
-                    <div class="form-group">
-                        <label>Nombre completo *</label>
-                        <input type="text" id="nombre-cliente" placeholder="Juan Pérez" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Email *</label>
-                        <input type="email" id="email-cliente" placeholder="juan@ejemplo.com" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Teléfono *</label>
-                        <input type="tel" id="telefono-cliente" placeholder="0999999999" required>
-                    </div>
-
-                    <button class="btn btn--accent" style="width: 100%; margin-top: 15px;" onclick="procesarCompra()">
-                        💳 Procesar compra
-                    </button>
                 </div>
             </div>
         </div>
     </div>
-</section>
+</main>
 
-<!-- ====== FOOTER ====== -->
-<footer class="site-footer">
-    <div class="container">
-        <div class="footer-grid">
-            <div>
-                <img src="../assets/img/los%20jefes.jpg" alt="Concesionaria Los Jefes" class="footer-logo">
-                <p>Concesionaria Los Jefes — Potencia y estilo sobre ruedas.</p>
-            </div>
-            <div>
-                <h6>Enlaces</h6>
-                <a href="portada.html">Inicio</a><br>
-                <a href="productos.html">Modelos</a><br>
-                <a href="#">Ofertas</a><br>
-                <a href="Formulario.html">Contacto</a>
-            </div>
-            <div>
-                <h6>Contacto</h6>
-                <p>Quito, Ecuador<br>Tel: (02) 456 7890<br>Email: contacto@losjefes.com</p>
+<footer class="mt-auto">
+    <div class="bg-brand-dark text-white py-3">
+        <div class="container d-flex justify-content-center">
+            <div class="d-flex align-items-center gap-3">
+                <a href="#" class="social-dot"><i class="bi bi-facebook"></i></a>
+                <a href="#" class="social-dot"><i class="bi bi-instagram"></i></a>
+                <a href="#" class="social-dot"><i class="bi bi-whatsapp"></i></a>
+                <span class="vr text-white opacity-25 d-none d-md-inline"></span>
+                <div class="d-flex align-items-center gap-2 small opacity-90">
+                    <span class="payment-pill">VISA</span>
+                    <span class="payment-pill">Mastercard</span>
+                    <span class="payment-pill">PayPal</span>
+                    <span class="payment-pill">Amex</span>
+                    <span class="payment-pill">Apple&nbsp;Pay</span>
+                </div>
             </div>
         </div>
-        <p class="copy">© 2025 Concesionaria Los Jefes. Todos los derechos reservados.</p>
+    </div>
+    <div class="bg-light-subtle">
+        <div class="container py-5">
+            <div class="row g-4 align-items-start justify-content-between">
+                <div class="col-12 col-md-8">
+                    <div class="row g-4">
+                        <div class="col-12 col-md-4">
+                            <h6 class="section-title">Información y ayuda</h6>
+                            <ul class="footer-list">
+                                <li><a class="footer-link" href="#">Ayuda</a></li>
+                                <li><a class="footer-link" href="#">Estado del pedido</a></li>
+                                <li><a class="footer-link" href="#">Envíos y devoluciones</a></li>
+                                <li><a class="footer-link" href="#">Políticas y garantías</a></li>
+                                <li><a class="footer-link" href="#">Descuentos estudiantes</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-12 col-md-4">
+                            <h6 class="section-title">Sobre nosotros</h6>
+                            <ul class="footer-list">
+                                <li><a class="footer-link" href="#">Quiénes somos</a></li>
+                                <li><a class="footer-link" href="#">Trabaja con nosotros</a></li>
+                                <li><a class="footer-link" href="#">Responsabilidad</a></li>
+                                <li><a class="footer-link" href="#">Relación con inversores</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-12 col-md-4">
+                            <h6 class="section-title">Compras desde</h6>
+                            <ul class="footer-list">
+                                <li>Estás en <strong>Ecuador</strong></li>
+                                <li><a class="footer-link" href="#">Cambiar país</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-3 text-center text-md-end">
+                    <div class="footer-logo d-inline-flex flex-column align-items-center align-items-md-end">
+                        <img src="/assets/img/logo.png" class="footer-logo-img">
+                        <span class="lh-1 mt-1">
+                <small class="text-uppercase text-muted fw-semibold">Concesionaria</small>
+                <strong class="d-block">Los Jefes</strong>
+              </span>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <a class="footer-link" href="#">© 2025 Concesionaria Los Jefes</a>
+                <div class="d-flex gap-3 small">
+                    <a class="footer-link" href="#">Privacidad y cookies</a>
+                    <a class="footer-link" href="#">Términos y condiciones</a>
+                    <a class="footer-link" href="#">Accesibilidad</a>
+                </div>
+            </div>
+        </div>
     </div>
 </footer>
 
-<!-- Bootstrap JS -->
-<script src="../bootstrap.bundle.min.js"></script>
+<script src="/jquery-3.7.1.min.js"></script>
+<script src="/bootstrap.bundle.min.js"></script>
+<script src="/js/carrito.js"></script>
 
-<!-- Sistema de carrito completo -->
-<script src="../js/carrito.js"></script>
-
-<!-- Script para el menú móvil -->
-<script>
-    const navToggle = document.getElementById('navToggle');
-    const siteNav = document.getElementById('siteNav');
-
-    if (navToggle) {
-        navToggle.addEventListener('click', function() {
-            siteNav.classList.toggle('is-open');
-            document.body.classList.toggle('no-scroll');
-        });
-    }
-
-    const navLinks = document.querySelectorAll('.site-nav__link');
-    navLinks.forEach(link => {
-        link.addEventListener('click', function() {
-            siteNav.classList.remove('is-open');
-            document.body.classList.remove('no-scroll');
-        });
-    });
-</script>
 </body>
 </html>

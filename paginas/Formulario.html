@@ -1,116 +1,245 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Formulario de Contacto - Concesionaria Los Jefes</title>
-    <link rel="stylesheet" href="../assets/styles.css">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Contacto y Financiamiento - Concesionaria Los Jefes</title>
+    <link href="/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="/assets/styles.css" />
+    <meta name="theme-color" content="#0e2a46">
 </head>
 
-<body>
-<header class="site-header">
-    <div class="header-row container">
-        <a href="portada.html" class="brand">
-            <img src="../assets/img/logo-los-jefes.png.jpg" alt="Concesionaria Los Jefes" class="brand__logo">
-            <span class="brand__text">Concesionaria Los Jefes</span>
-        </a>
-
-        <div class="search-bar">
-            <input type="text" id="busqueda" placeholder="Buscar modelos o servicios...">
-            <button id="btnBuscar" title="Buscar">🔍</button>
-        </div>
-
-        <nav class="site-nav">
-            <a href="portada.html" class="site-nav__link">Inicio</a>
-            <a href="productos.html" class="site-nav__link">Catálogo</a>
-            <a href="Formulario.html" class="site-nav__link">Contacto</a>
-        </nav>
-    </div>
-
-    <p class="search-result" id="resultadoBusqueda"></p>
-</header>
-
-<section class="hero">
-    <div class="hero__media">
-        <img src="../assets/img/3toyota.jpg" alt="Contacto Concesionaria Los Jefes">
-    </div>
-    <div class="hero__content">
-        <h1 class="hero__title">El poder sobre cuatro ruedas</h1>
-        <p class="hero__subtitle">Estamos disponibles para atender tus dudas o agendar una cita personalizada.</p>
-    </div>
-</section>
-<section class="contact container">
-    <div class="contact__grid">
-        <div class="contact__form">
-            <h3>Formulario de Contacto</h3>
-            <p>Completa el siguiente formulario y uno de nuestros asesores se comunicará contigo.</p>
-            <form id="contactForm" novalidate>
-                <div class="field">
-                    <label>Nombre completo</label>
-                    <input type="text" id="nombre" placeholder="Tu nombre completo">
-                    <small class="error-msg"></small>
-                </div>
-                <div class="field">
-                    <label>Correo electrónico</label>
-                    <input type="email" id="correo" placeholder="correo@ejemplo.com">
-                    <small class="error-msg"></small>
-                </div>
-                <div class="field">
-                    <label>Número de teléfono</label>
-                    <input type="tel" id="telefono" placeholder="+593 999 999 999">
-                    <small class="error-msg"></small>
-                </div>
-                <div class="field">
-                    <label>Motivo de contacto</label>
-                    <select id="motivo">
-                        <option value="">Selecciona una opción</option>
-                        <option value="cotizacion">Cotización</option>
-                        <option value="soporte">Soporte técnico</option>
-                        <option value="prueba">Prueba de manejo</option>
-                        <option value="otro">Otro</option>
-                    </select>
-                    <small class="error-msg"></small>
-                </div>
-                <div class="field">
-                    <label>Mensaje</label>
-                    <textarea id="mensaje" rows="4" placeholder="Escribe tu mensaje..."></textarea>
-                    <small class="error-msg"></small>
-                </div>
-
-                <button type="submit" class="btn btn--primary">Enviar mensaje</button>
-            </form>
-
-            <div class="loading" style="display:none;">⏳ Enviando...</div>
-            <div class="respuesta" style="display:none;"></div>
-        </div>
-        <aside class="contact__aside">
-            <div class="aside-card">
-                <h4>Contáctanos directamente</h4>
-                <ul class="contact__list">
-                    <li>WhatsApp: <a href="#">Haz clic aquí</a></li>
-                    <li>Tel: <strong>(02) 456 7890</strong></li>
-                    <li>Email: <a href="mailto:contacto@losjefes.com">contacto@losjefes.com</a></li>
+<body class="d-flex flex-column min-vh-100">
+<header class="bg-brand-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-brand-dark py-1">
+        <div class="container">
+            <a class="navbar-brand d-flex flex-column align-items-center text-center" href="portada.html">
+                <img src="/assets/img/logo.png" alt="Concesionaria Los Jefes" class="brand-logo">
+                <span class="lh-1 mt-1">
+            <small class="text-uppercase fw-semibold opacity-75 d-block">Concesionaria</small>
+            <strong class="fs-5 text-white d-block">Los Jefes</strong>
+          </span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#mainNavbar" aria-controls="mainNavbar"
+                    aria-expanded="false" aria-label="Menú">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNavbar">
+                <form class="navbar-search d-flex mx-lg-auto my-3 my-lg-0">
+                    <input class="form-control search-input me-2" type="search"
+                           placeholder="Buscar modelos">
+                    <button class="btn btn-danger px-4" type="submit">Buscar</button>
+                </form>
+                <ul class="navbar-nav ms-lg-3 align-items-lg-center gap-3">
+                    <li class="nav-item"><a class="nav-link" href="portada.html">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="productos.html">Modelos</a></li>
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="Formulario.html">Contacto</a></li>
+                    <li class="nav-item ms-4 position-relative">
+                        <a class="nav-link p-0 d-inline-flex align-items-center" href="carrito.html">
+                            <i class="bi bi-cart3 nav-icon"></i>
+                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"> 0
+                            </span>
+                        </a>
+                    </li>
+                    <li class="nav-item ms-3">
+                        <a class="nav-link p-0 d-inline-flex align-items-center" href="#">
+                            <i class="bi bi-person-circle nav-icon"></i>
+                        </a>
+                    </li>
                 </ul>
             </div>
-            <div class="aside-card">
-                <h4>Agenda tu prueba de manejo</h4>
-                <p>Elige un horario disponible:</p>
-                <div class="schedule">
-                    <button type="button" class="time-slot">Lunes 10:00 - 11:00</button>
-                    <button type="button" class="time-slot">Martes 15:00 - 16:00</button>
-                    <button type="button" class="time-slot">Miércoles 11:00 - 12:00</button>
-                    <button type="button" class="time-slot">Jueves 14:00 - 15:00</button>
-                    <button type="button" class="time-slot">Viernes 09:00 - 10:00</button>
+        </div>
+    </nav>
+</header>
+
+<main class="flex-grow-1 py-5">
+    <div class="container">
+
+        <h1 class="h2 fw-bold mb-4 text-center text-lg-start">Contáctanos o Solicita Financiamiento</h1>
+
+        <div class="row g-5">
+
+            <div class="col-lg-7">
+                <div class="card shadow-sm border-0">
+                    <div class="card-body p-4 p-md-5">
+                        <h2 class="h4 fw-bold mb-4 text-brand-dark">Envíanos un mensaje</h2>
+
+                        <form id="contactForm">
+
+                            <div class="row g-3 mb-3">
+                                <div class="col-md-6">
+                                    <label for="nombre" class="form-label fw-semibold">Nombre</label>
+                                    <input type="text" class="form-control" id="nombre" placeholder="Tu nombre" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="apellido" class="form-label fw-semibold">Apellido</label>
+                                    <input type="text" class="form-control" id="apellido" placeholder="Tu apellido" required>
+                                </div>
+                            </div>
+
+                            <div class="row g-3 mb-3">
+                                <div class="col-md-6">
+                                    <label for="email" class="form-label fw-semibold">Correo Electrónico</label>
+                                    <input type="email" class="form-control" id="email" placeholder="ejemplo@correo.com" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="telefono" class="form-label fw-semibold">Teléfono</label>
+                                    <input type="tel" class="form-control" id="telefono" placeholder="+593 99 123 4567">
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="motivo" class="form-label fw-semibold">Motivo de Contacto</label>
+                                <select class="form-select" id="motivo" required>
+                                    <option selected disabled value="">Seleccionar...</option>
+                                    <option>Solicitud de Financiamiento</option>
+                                    <option>Solicitar Prueba de Manejo</option>
+                                    <option>Consulta General</option>
+                                    <option>Soporte Post-Venta</option>
+                                </select>
+                            </div>
+
+                            <div class="mb-4">
+                                <label for="mensaje" class="form-label fw-semibold">Mensaje</label>
+                                <textarea class="form-control" id="mensaje" rows="4" placeholder="Escribe tu consulta o los detalles de tu solicitud..." required></textarea>
+                            </div>
+
+                            <div class="form-check mb-4">
+                                <input class="form-check-input" type="checkbox" value="" id="policyCheck" required>
+                                <label class="form-check-label small" for="policyCheck">
+                                    Acepto la <a href="#" class="text-decoration-underline">Política de Privacidad</a> y los Términos de Servicio.
+                                </label>
+                            </div>
+
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-danger btn-lg fw-bold">Enviar Mensaje</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
-                <button type="button" class="btn btn--primary book-btn">Agendar cita</button>
             </div>
-        </aside>
+
+            <aside class="col-lg-5">
+
+                <div class="card shadow-sm border-0 mb-4 bg-light-subtle">
+                    <div class="card-body">
+                        <h4 class="h5 fw-bold mb-3 text-brand-dark"><i class="bi bi-headset me-2 text-primary"></i> Contáctanos directamente</h4>
+                        <ul class="list-unstyled mb-0">
+                            <li class="mb-2">
+                                <i class="bi bi-whatsapp me-2 text-success"></i> WhatsApp: <a href="#" class="text-decoration-none fw-semibold">Enviar mensaje</a>
+                            </li>
+                            <li class="mb-2">
+                                <i class="bi bi-telephone me-2 text-primary"></i> Teléfono: <strong class="text-dark">(02) 456 7890</strong>
+                            </li>
+                            <li>
+                                <i class="bi bi-envelope me-2 text-danger"></i> Email: <a href="mailto:contacto@losjefes.com" class="text-decoration-none">contacto@losjefes.com</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card shadow-sm border-0">
+                    <div class="card-body">
+                        <h4 class="h5 fw-bold mb-3 text-brand-dark"><i class="bi bi-calendar-check me-2 text-primary"></i> Agenda tu prueba de manejo</h4>
+                        <p class="small text-muted mb-3">Elige un horario disponible para visitarnos en nuestro concesionario central en Quito:</p>
+
+                        <div class="d-flex flex-wrap gap-2 mb-4">
+                            <button type="button" class="btn btn-outline-secondary btn-sm rounded-pill time-slot">Lunes 10:00</button>
+                            <button type="button" class="btn btn-outline-secondary btn-sm rounded-pill time-slot">Martes 15:00</button>
+                            <button type="button" class="btn btn-outline-secondary btn-sm rounded-pill time-slot">Miércoles 11:00</button>
+                            <button type="button" class="btn btn-outline-secondary btn-sm rounded-pill time-slot">Jueves 14:00</button>
+                            <button type="button" class="btn btn-outline-secondary btn-sm rounded-pill time-slot">Viernes 09:00</button>
+                        </div>
+
+                        <div class="d-grid">
+                            <button type="button" class="btn btn-primary fw-semibold">Agendar Cita</button>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+        </div>
     </div>
-</section>
-<footer class="site-footer">
-    <p class="copy">© 2025 Concesionaria Los Jefes — Todos los derechos reservados.</p>
+</main>
+
+<footer class="mt-auto">
+    <div class="bg-brand-dark text-white py-3">
+        <div class="container d-flex justify-content-center">
+            <div class="d-flex align-items-center gap-3">
+                <a href="#" class="social-dot"><i class="bi bi-facebook"></i></a>
+                <a href="#" class="social-dot"><i class="bi bi-instagram"></i></a>
+                <a href="#" class="social-dot"><i class="bi bi-whatsapp"></i></a>
+                <span class="vr text-white opacity-25 d-none d-md-inline"></span>
+                <div class="d-flex align-items-center gap-2 small opacity-90">
+                    <span class="payment-pill">VISA</span>
+                    <span class="payment-pill">Mastercard</span>
+                    <span class="payment-pill">PayPal</span>
+                    <span class="payment-pill">Amex</span>
+                    <span class="payment-pill">Apple&nbsp;Pay</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="bg-light-subtle">
+        <div class="container py-5">
+            <div class="row g-4 align-items-start justify-content-between">
+                <div class="col-12 col-md-8">
+                    <div class="row g-4">
+                        <div class="col-12 col-md-4">
+                            <h6 class="section-title">Información y ayuda</h6>
+                            <ul class="footer-list">
+                                <li><a class="footer-link" href="#">Ayuda</a></li>
+                                <li><a class="footer-link" href="#">Estado del pedido</a></li>
+                                <li><a class="footer-link" href="#">Envíos y devoluciones</a></li>
+                                <li><a class="footer-link" href="#">Políticas y garantías</a></li>
+                                <li><a class="footer-link" href="#">Descuentos estudiantes</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-12 col-md-4">
+                            <h6 class="section-title">Sobre nosotros</h6>
+                            <ul class="footer-list">
+                                <li><a class="footer-link" href="#">Quiénes somos</a></li>
+                                <li><a class="footer-link" href="#">Trabaja con nosotros</a></li>
+                                <li><a class="footer-link" href="#">Responsabilidad</a></li>
+                                <li><a class="footer-link" href="#">Relación con inversores</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-12 col-md-4">
+                            <h6 class="section-title">Compras desde</h6>
+                            <ul class="footer-list">
+                                <li>Estás en <strong>Ecuador</strong></li>
+                                <li><a class="footer-link" href="#">Cambiar país</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-3 text-center text-md-end">
+                    <div class="footer-logo d-inline-flex flex-column align-items-center align-items-md-end">
+                        <img src="/assets/img/logo.png" class="footer-logo-img">
+                        <span class="lh-1 mt-1">
+                <small class="text-uppercase text-muted fw-semibold">Concesionaria</small>
+                <strong class="d-block">Los Jefes</strong>
+              </span>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <a class="footer-link" href="#">© 2025 Concesionaria Los Jefes</a>
+                <div class="d-flex gap-3 small">
+                    <a class="footer-link" href="#">Privacidad y cookies</a>
+                    <a class="footer-link" href="#">Términos y condiciones</a>
+                    <a class="footer-link" href="#">Accesibilidad</a>
+                </div>
+            </div>
+        </div>
+    </div>
 </footer>
-<script src="../jquery-3.7.1.min.js"></script>
-<script src="../js/formulario.js"></script>
+
+<script src="/jquery-3.7.1.min.js"></script>
+<script src="/bootstrap.bundle.min.js"></script>
+<script src="/js/formulario.js"></script>
+
 </body>
 </html>
