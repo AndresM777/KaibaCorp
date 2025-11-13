@@ -1,10 +1,13 @@
 /* ====== Paleta (según logo) ====== */
+/* ====== Paleta (según logo) ====== */
 :root{
-    --blue-900:#0e2a46;   /* header/footer principal */
-    --blue-700:#163a63;   /* botones primarios */
-    --blue-600:#1e4f86;   /* hover primario */
-    --accent:#d62828;     /* botón destacado rojo */
+    --blue-900:#0e2a46;
+    --blue-700:#163a63;
+    --blue-600:#1e4f86;
+    --accent:#d62828;
+    --accent-rgb: 214, 40, 40; /* ¡NUEVA VARIABLE AÑADIDA! (RGB de #d62828) */
     --ink:#101418;
+    /* ... el resto de sus variables ... */
     --muted:#5b6b7a;
     --bg:#f3f6f9;
     --card:#ffffff;
@@ -715,4 +718,89 @@ select{
     .hero__media img{height:180px}
     .brand__logo{width:120px}
     .hero__title{font-size:1.2rem}
+}
+/* ====== Componente Brand Link / Marcas Destacadas ====== */
+.brand-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    text-decoration: none;
+    color: var(--ink);
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 15px;
+    width: 100%;
+    max-width: 150px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+
+    /* SOLUCIÓN AL CENTRADO: */
+    justify-content: center; /* Centra los elementos verticalmente */
+    height: 100%; /* Asegura que todos los botones ocupen la altura completa de su columna */
+}
+
+/* Es crucial que la fila de contenedores de Bootstrap también permita esto */
+/* En portada.html la fila es: <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-4 justify-content-center"> */
+/* Bootstrap ya ayuda con esto, pero el height: 100% en brand-link es clave. */
+.brand-link:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(var(--accent-rgb), 0.15);
+}
+.brand-link {
+    /* ... (Estilos anteriores) ... */
+    position: relative; /* Necesario para que el pseudo-elemento de fondo funcione correctamente */
+    overflow: hidden; /* Asegura que la imagen de fondo no se salga de los bordes redondeados */
+    z-index: 1; /* Necesario para apilar los elementos correctamente */
+}
+
+/* Estilo para la imagen de fondo de hover */
+.brand-link::before {
+    content: '';
+    position: absolute;
+    inset: 0; /* Cubre todo el botón */
+    background-image: url('img/3mazda.jpg'); /* ¡CAMBIE ESTA RUTA! */
+    background-size: cover;
+    background-position: center;
+    border-radius: var(--radius);
+    opacity: 0; /* Inicialmente invisible */
+    transition: opacity 0.3s ease;
+    z-index: -1; /* Lo enviamos detrás del contenido (logo y texto) */
+}
+
+.brand-link:hover::before {
+    opacity: 1; /* Se vuelve visible al pasar el ratón */
+}
+
+.brand-link:hover {
+    color: #fff; /* Cambiamos el color del texto a blanco para que se vea sobre el fondo oscuro */
+    border-color: var(--accent);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(var(--accent-rgb), 0.15);
+    background: transparent; /* Eliminamos el fondo blanco al hacer hover */
+}
+
+/* Aseguramos que el logo y el texto estén sobre la imagen de fondo */
+.brand-link__icon, .brand-link h4 {
+    position: relative;
+    z-index: 2;
+    transition: color 0.3s;
+}
+
+/* Estilo adicional para hacer el logo menos visible o cambiar su color si es necesario (opcional) */
+/* .brand-link:hover .brand-link__icon { filter: brightness(1.5); } */
+.brand-link__icon {
+    width: 130px;
+    height: auto;
+    object-fit: contain;
+    display: block;
+    margin-bottom: 10px; /* Reducimos un poco el margen para que quepa mejor */
+}
+/* Ajuste de margen para la sección de marcas */
+.brands {
+    padding-top: 40px;
+    padding-bottom: 80px; /* Aumentamos el espacio debajo de los botones de marca */
 }
