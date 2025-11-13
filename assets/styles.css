@@ -1,0 +1,139 @@
+/* Colores base */
+:root {
+    --brand-dark: #0b2b4a;
+}
+.bg-brand-dark {
+    background-color: var(--brand-dark) !important;
+}
+
+/* Header
+ Header más delgado */
+.navbar {
+    padding-top: .25rem !important;
+    padding-bottom: .25rem !important;
+}
+
+.navbar,
+.navbar .navbar-brand,
+.navbar .nav-link {
+    color: #fff !important;
+}
+
+.navbar .nav-link:hover {
+    color: #e6f0ff !important;
+}
+
+/* Logo */
+.brand-logo {
+    height: 40px;
+    width: auto;
+    object-fit: contain;
+}
+
+/* Buscador */
+.navbar-search {
+    width: 100%;
+    max-width: 640px;
+}
+
+.search-input {
+    height: 34px;
+    border: none;
+    border-radius: .6rem;
+}
+
+/* Íconos */
+.nav-icon {
+    color: #fff;
+    font-size: 1.3rem;
+    opacity: .95;
+}
+.nav-icon:hover {
+    opacity: 1;
+}
+
+/* Separación extra entre menú e íconos */
+.navbar-nav .nav-item:nth-last-child(2) {
+    margin-left: 3.5rem !important;
+}
+
+/* Footer */
+.bg-light-subtle {
+    background: #f7f7f7;
+}
+
+.section-title {
+    text-transform: uppercase;
+    color: #6c757d;
+    font-size: .85rem;
+    margin-bottom: .5rem;
+}
+
+.footer-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.footer-list li {
+    margin-bottom: .25rem;
+}
+
+.footer-link {
+    color: #6c757d;
+    text-decoration: none;
+}
+.footer-link:hover {
+    color: var(--brand-dark);
+    text-decoration: underline;
+}
+
+/* Redes sociales */
+.social-dot {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #ffffff22;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+}
+.social-dot i {
+    font-size: 1.1rem;
+}
+.social-dot:hover {
+    background: #ffffff44;
+}
+
+/* Métodos de pago */
+.payment-pill {
+    padding: .25rem .5rem;
+    border-radius: .35rem;
+    background: #ffffff22;
+    border: 1px solid #ffffff33;
+    color: #fff;
+}
+
+/* Logo footer */
+.footer-logo-img {
+    height: 42px;
+    object-fit: contain;
+}
+
+/* Parte inferior del footer */
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 1.5rem;
+    border-top: 1px solid #ddd;
+    margin-top: 1.5rem;
+}
+
+/* Responsivo */
+@media (max-width: 991px) {
+    .navbar-search {
+        max-width: 100%;
+        order: 2;
+    }
+}

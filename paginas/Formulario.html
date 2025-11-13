@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Formulario de Contacto - Concesionaria Los Jefes</title>
+    <link rel="stylesheet" href="../assets/styles.css">
+</head>
+
+<body>
+<header class="site-header">
+    <div class="header-row container">
+        <a href="portada.html" class="brand">
+            <img src="../assets/img/logo-los-jefes.png.jpg" alt="Concesionaria Los Jefes" class="brand__logo">
+            <span class="brand__text">Concesionaria Los Jefes</span>
+        </a>
+
+        <div class="search-bar">
+            <input type="text" id="busqueda" placeholder="Buscar modelos o servicios...">
+            <button id="btnBuscar" title="Buscar">🔍</button>
+        </div>
+
+        <nav class="site-nav">
+            <a href="portada.html" class="site-nav__link">Inicio</a>
+            <a href="productos.html" class="site-nav__link">Catálogo</a>
+            <a href="Formulario.html" class="site-nav__link">Contacto</a>
+        </nav>
+    </div>
+
+    <p class="search-result" id="resultadoBusqueda"></p>
+</header>
+
+<section class="hero">
+    <div class="hero__media">
+        <img src="../assets/img/3toyota.jpg" alt="Contacto Concesionaria Los Jefes">
+    </div>
+    <div class="hero__content">
+        <h1 class="hero__title">El poder sobre cuatro ruedas</h1>
+        <p class="hero__subtitle">Estamos disponibles para atender tus dudas o agendar una cita personalizada.</p>
+    </div>
+</section>
+<section class="contact container">
+    <div class="contact__grid">
+        <div class="contact__form">
+            <h3>Formulario de Contacto</h3>
+            <p>Completa el siguiente formulario y uno de nuestros asesores se comunicará contigo.</p>
+            <form id="contactForm" novalidate>
+                <div class="field">
+                    <label>Nombre completo</label>
+                    <input type="text" id="nombre" placeholder="Tu nombre completo">
+                    <small class="error-msg"></small>
+                </div>
+                <div class="field">
+                    <label>Correo electrónico</label>
+                    <input type="email" id="correo" placeholder="correo@ejemplo.com">
+                    <small class="error-msg"></small>
+                </div>
+                <div class="field">
+                    <label>Número de teléfono</label>
+                    <input type="tel" id="telefono" placeholder="+593 999 999 999">
+                    <small class="error-msg"></small>
+                </div>
+                <div class="field">
+                    <label>Motivo de contacto</label>
+                    <select id="motivo">
+                        <option value="">Selecciona una opción</option>
+                        <option value="cotizacion">Cotización</option>
+                        <option value="soporte">Soporte técnico</option>
+                        <option value="prueba">Prueba de manejo</option>
+                        <option value="otro">Otro</option>
+                    </select>
+                    <small class="error-msg"></small>
+                </div>
+                <div class="field">
+                    <label>Mensaje</label>
+                    <textarea id="mensaje" rows="4" placeholder="Escribe tu mensaje..."></textarea>
+                    <small class="error-msg"></small>
+                </div>
+
+                <button type="submit" class="btn btn--primary">Enviar mensaje</button>
+            </form>
+
+            <div class="loading" style="display:none;">⏳ Enviando...</div>
+            <div class="respuesta" style="display:none;"></div>
+        </div>
+        <aside class="contact__aside">
+            <div class="aside-card">
+                <h4>Contáctanos directamente</h4>
+                <ul class="contact__list">
+                    <li>WhatsApp: <a href="#">Haz clic aquí</a></li>
+                    <li>Tel: <strong>(02) 456 7890</strong></li>
+                    <li>Email: <a href="mailto:contacto@losjefes.com">contacto@losjefes.com</a></li>
+                </ul>
+            </div>
+            <div class="aside-card">
+                <h4>Agenda tu prueba de manejo</h4>
+                <p>Elige un horario disponible:</p>
+                <div class="schedule">
+                    <button type="button" class="time-slot">Lunes 10:00 - 11:00</button>
+                    <button type="button" class="time-slot">Martes 15:00 - 16:00</button>
+                    <button type="button" class="time-slot">Miércoles 11:00 - 12:00</button>
+                    <button type="button" class="time-slot">Jueves 14:00 - 15:00</button>
+                    <button type="button" class="time-slot">Viernes 09:00 - 10:00</button>
+                </div>
+                <button type="button" class="btn btn--primary book-btn">Agendar cita</button>
+            </div>
+        </aside>
+    </div>
+</section>
+<footer class="site-footer">
+    <p class="copy">© 2025 Concesionaria Los Jefes — Todos los derechos reservados.</p>
+</footer>
+<script src="../jquery-3.7.1.min.js"></script>
+<script src="../js/formulario.js"></script>
+</body>
+</html>
