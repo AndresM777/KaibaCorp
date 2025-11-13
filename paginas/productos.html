@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="es" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Catálogo - Concesionaria Los Jefes</title>
+    <link rel="stylesheet" href="/bootstrap.min.css">
+    <link rel="stylesheet" href="/https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="/assets/styles.css">
+    <meta name="theme-color" content="#0e2a46">
+</head>
+
+<body class="d-flex flex-column min-vh-100">
+<header class="bg-brand-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-brand-dark py-1">
+        <div class="container">
+            <a class="navbar-brand d-flex flex-column align-items-center text-center" href="portada.html">
+                <img src="/assets/img/logo.png" alt="Concesionaria Los Jefes" class="brand-logo">
+                <span class="lh-1 mt-1">
+            <small class="text-uppercase fw-semibold opacity-75 d-block">Concesionaria</small>
+            <strong class="fs-5 text-white d-block">Los Jefes</strong>
+          </span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#mainNavbar" aria-controls="mainNavbar"
+                    aria-expanded="false" aria-label="Menú">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNavbar">
+                <form class="navbar-search d-flex mx-lg-auto my-3 my-lg-0">
+                    <input class="form-control search-input me-2" type="search"
+                           placeholder="Buscar modelos">
+                    <button class="btn btn-danger px-4" type="submit">Buscar</button>
+                </form>
+                <ul class="navbar-nav ms-lg-3 align-items-lg-center gap-3">
+                    <li class="nav-item"><a class="nav-link" href="portada.html">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="productos.html">Modelos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="Formulario.html">Contacto</a></li>
+                    <li class="nav-item ms-4 position-relative">
+                        <a class="nav-link p-0 d-inline-flex align-items-center" href="carrito.html">
+                            <i class="bi bi-cart3 nav-icon"></i>
+                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"> 0
+                            </span>
+                        </a>
+                    </li>
+                    <li class="nav-item ms-3">
+                        <a class="nav-link p-0 d-inline-flex align-items-center" href="#">
+                            <i class="bi bi-person-circle nav-icon"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<main class="flex-grow-1 py-5">
+    <div class="container">
+        <h1 class="h2 fw-bold mb-4">Catálogo de Vehículos</h1>
+
+        <div class="row g-4">
+            <aside class="col-lg-3">
+                <div class="card shadow-sm mb-4">
+                    <div class="card-header bg-brand-dark text-white fw-bold">
+                        <i class="bi bi-funnel me-2"></i> Filtros
+                    </div>
+                    <div class="accordion accordion-flush" id="filterAccordion">
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingOne">
+                                <button class="accordion-button fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    Marca
+                                </button>
+                            </h2>
+                            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#filterAccordion">
+                                <div class="accordion-body">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="Toyota" id="checkToyota">
+                                        <label class="form-check-label" for="checkToyota">Toyota</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="Porsche" id="checkPorsche">
+                                        <label class="form-check-label" for="checkPorsche">Porsche</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="Mazda" id="checkMazda">
+                                        <label class="form-check-label" for="checkMazda">Mazda</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingTwo">
+                                <button class="accordion-button fw-semibold collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    Rango de Precio
+                                </button>
+                            </h2>
+                            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#filterAccordion">
+                                <div class="accordion-body">
+                                    <div class="mb-3">
+                                        <label for="minPrice" class="form-label small">Mínimo ($)</label>
+                                        <input type="number" class="form-control form-control-sm" id="minPrice" placeholder="10,000">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="maxPrice" class="form-label small">Máximo ($)</label>
+                                        <input type="number" class="form-control form-control-sm" id="maxPrice" placeholder="150,000">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="p-3 border-top d-grid gap-2">
+                            <button type="button" class="btn btn-primary btn-sm">Aplicar Filtros</button>
+                            <button type="button" class="btn btn-outline-secondary btn-sm">Limpiar</button>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+            <div class="col-lg-9">
+                <header class="d-flex justify-content-between align-items-center mb-4">
+                    <p class="mb-0 text-muted">Mostrando **9** de 12 resultados</p>
+                    <div class="d-flex align-items-center">
+                        <label for="sortOrder" class="form-label mb-0 me-2 small d-none d-md-block">Ordenar por:</label>
+                        <select class="form-select form-select-sm" id="sortOrder" style="width: auto;">
+                            <option selected>Más reciente</option>
+                            <option>Precio: Menor a Mayor</option>
+                            <option>Precio: Mayor a Menor</option>
+                        </select>
+                    </div>
+                </header>
+
+                <div id="productGrid" class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+
+                    <div class="col">
+                        <div class="card product-card shadow-sm h-100">
+                            <span class="badge bg-danger position-absolute top-0 start-0 m-2 z-1">¡Nuevo!</span>
+                            <img src="/assets/img/3mazda.jpg" class="card-img-top" alt="Toyota Supra 2025" style="height: 180px; object-fit: cover;">
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title fw-bold">Toyota Supra 2025</h5>
+                                <p class="small text-muted mb-2">
+                                    <i class="bi bi-speedometer2 me-1"></i> 0 km
+                                    <i class="bi bi-fuel-pump ms-3 me-1"></i> Gasolina
+                                </p>
+                                <div class="fs-4 fw-bolder text-danger mb-3 mt-auto">$45,900</div>
+                                <div class="d-grid gap-2">
+                                    <a href="Detalle.html" class="btn btn-primary fw-semibold">Ver Detalle</a>
+                                    <button class="btn btn-outline-success btn-add-cart-funcional" type="button">
+                                        <i class="bi bi-cart-plus me-1"></i> Añadir al Carrito
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="card product-card shadow-sm h-100">
+                            <span class="badge bg-success position-absolute top-0 start-0 m-2 z-1">¡Oferta!</span>
+                            <img src="/assets/img/3porsche.jpg" class="card-img-top" alt="Porsche 911" style="height: 180px; object-fit: cover;">
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title fw-bold">Porsche 911 Turbo S</h5>
+                                <p class="small text-muted mb-2">
+                                    <i class="bi bi-speedometer2 me-1"></i> 15,000 km
+                                    <i class="bi bi-fuel-pump ms-3 me-1"></i> Gasolina
+                                </p>
+                                <div class="text-decoration-line-through text-muted small">$250,000</div>
+                                <div class="fs-4 fw-bolder text-danger mb-3 mt-auto">$235,000</div>
+                                <div class="d-grid gap-2">
+                                    <a href="Detalle.html" class="btn btn-primary fw-semibold">Ver Detalle</a>
+                                    <button class="btn btn-outline-success btn-add-cart-funcional" type="button">
+                                        <i class="bi bi-cart-plus me-1"></i> Añadir al Carrito
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="card product-card shadow-sm h-100">
+                            <img src="/assets/img/1mazda.jpeg" class="card-img-top" alt="Mazda CX-5 2025" style="height: 180px; object-fit: cover;">
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title fw-bold">Mazda CX-5 2025</h5>
+                                <p class="small text-muted mb-2">
+                                    <i class="bi bi-speedometer2 me-1"></i> 0 km
+                                    <i class="bi bi-fuel-pump ms-3 me-1"></i> Gasolina
+                                </p>
+                                <div class="fs-4 fw-bolder text-danger mb-3 mt-auto">$39,800</div>
+                                <div class="d-grid gap-2">
+                                    <a href="Detalle.html" class="btn btn-primary fw-semibold">Ver Detalle</a>
+                                    <button class="btn btn-outline-success btn-add-cart-funcional" type="button">
+                                        <i class="bi bi-cart-plus me-1"></i> Añadir al Carrito
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <nav aria-label="Paginación de productos" class="mt-5 d-flex justify-content-center">
+                    <ul class="pagination">
+                        <li class="page-item disabled"><a class="page-link" href="#" aria-label="Anterior"><span aria-hidden="true">&laquo;</span></a></li>
+                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item"><a class="page-link" href="#" aria-label="Siguiente"><span aria-hidden="true">&raquo;</span></a></li>
+                    </ul>
+                </nav>
+
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer class="mt-auto">
+    <div class="bg-brand-dark text-white py-3">
+        <div class="container d-flex justify-content-center">
+            <div class="d-flex align-items-center gap-3">
+                <a href="#" class="social-dot"><i class="bi bi-facebook"></i></a>
+                <a href="#" class="social-dot"><i class="bi bi-instagram"></i></a>
+                <a href="#" class="social-dot"><i class="bi bi-whatsapp"></i></a>
+                <span class="vr text-white opacity-25 d-none d-md-inline"></span>
+                <div class="d-flex align-items-center gap-2 small opacity-90">
+                    <span class="payment-pill">VISA</span>
+                    <span class="payment-pill">Mastercard</span>
+                    <span class="payment-pill">PayPal</span>
+                    <span class="payment-pill">Amex</span>
+                    <span class="payment-pill">Apple&nbsp;Pay</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="bg-light-subtle">
+        <div class="container py-5">
+            <div class="row g-4 align-items-start justify-content-between">
+                <div class="col-12 col-md-8">
+                    <div class="row g-4">
+                        <div class="col-12 col-md-4">
+                            <h6 class="section-title">Información y ayuda</h6>
+                            <ul class="footer-list">
+                                <li><a class="footer-link" href="#">Ayuda</a></li>
+                                <li><a class="footer-link" href="#">Estado del pedido</a></li>
+                                <li><a class="footer-link" href="#">Envíos y devoluciones</a></li>
+                                <li><a class="footer-link" href="#">Políticas y garantías</a></li>
+                                <li><a class="footer-link" href="#">Descuentos estudiantes</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-12 col-md-4">
+                            <h6 class="section-title">Sobre nosotros</h6>
+                            <ul class="footer-list">
+                                <li><a class="footer-link" href="#">Quiénes somos</a></li>
+                                <li><a class="footer-link" href="#">Trabaja con nosotros</a></li>
+                                <li><a class="footer-link" href="#">Responsabilidad</a></li>
+                                <li><a class="footer-link" href="#">Relación con inversores</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-12 col-md-4">
+                            <h6 class="section-title">Compras desde</h6>
+                            <ul class="footer-list">
+                                <li>Estás en <strong>Ecuador</strong></li>
+                                <li><a class="footer-link" href="#">Cambiar país</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-3 text-center text-md-end">
+                    <div class="footer-logo d-inline-flex flex-column align-items-center align-items-md-end">
+                        <img src="/assets/img/logo.png" class="footer-logo-img">
+                        <span class="lh-1 mt-1">
+                <small class="text-uppercase text-muted fw-semibold">Concesionaria</small>
+                <strong class="d-block">Los Jefes</strong>
+              </span>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <a class="footer-link" href="#">© 2025 Concesionaria Los Jefes</a>
+                <div class="d-flex gap-3 small">
+                    <a class="footer-link" href="#">Privacidad y cookies</a>
+                    <a class="footer-link" href="#">Términos y condiciones</a>
+                    <a class="footer-link" href="#">Accesibilidad</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="/jquery-3.7.1.min.js"></script>
+<script src="/bootstrap.bundle.min.js"></script>
+<script src="/js/productos.js"></script>
+
+</body>
+</html>

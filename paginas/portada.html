@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="es" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Concesionaria Los Jefes</title>
+    <link rel="stylesheet" href="/bootstrap.min.css">
+    <link rel="stylesheet" href="/https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="/assets/styles.css"> <meta name="theme-color" content="#0e2a46">
+</head>
+
+<body class="d-flex flex-column min-vh-100">
+<header class="bg-brand-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-brand-dark py-1">
+        <div class="container">
+            <a class="navbar-brand d-flex flex-column align-items-center text-center" href="#">
+                <img src="/assets/img/logo.png" alt="Concesionaria Los Jefes" class="brand-logo">
+                <span class="lh-1 mt-1">
+            <small class="text-uppercase fw-semibold opacity-75 d-block">Concesionaria</small>
+            <strong class="fs-5 text-white d-block">Los Jefes</strong>
+          </span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#mainNavbar" aria-controls="mainNavbar"
+                    aria-expanded="false" aria-label="Menú">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNavbar">
+                <form class="navbar-search d-flex mx-lg-auto my-3 my-lg-0">
+                    <input class="form-control search-input me-2" type="search"
+                           placeholder="Buscar modelos">
+                    <button class="btn btn-danger px-4" type="submit">Buscar</button>
+                </form>
+                <ul class="navbar-nav ms-lg-3 align-items-lg-center gap-3">
+                    <li class="nav-item"><a class="nav-link" href="#">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="productos.html">Modelos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="Formulario.html">Contacto</a></li>
+                    <li class="nav-item ms-4 position-relative">
+                        <a class="nav-link p-0 d-inline-flex align-items-center" href="#">
+                            <i class="bi bi-cart3 nav-icon"></i>
+                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"> 0
+                </span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item ms-3">
+                        <a class="nav-link p-0 d-inline-flex align-items-center" href="#">
+                            <i class="bi bi-person-circle nav-icon"></i>
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+</header>
+<main class="flex-grow-1">
+
+    <section id="inicio" class="hero">
+        <picture class="hero__media">
+            <img src="/assets/img/FotoPortada.png" alt="Auto deportivo gris">
+        </picture>
+        <div class="hero__content container">
+            <h1 class="hero__title">Encuentra tu nuevo vehículo con estilo y confianza.</h1>
+            <p class="hero__subtitle">Modelos 0 km · Garantía oficial · Planes flexibles</p>
+            <a href="productos.html" class="btn btn-danger btn-lg fw-bold">VER MODELOS DISPONIBLES</a>
+        </div>
+    </section>
+
+    <section class="brands container py-5">
+        <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-4 justify-content-center">
+            <div class="col d-flex justify-content-center">
+                <a href="toyota.html" class="brand-link" title="Ver modelos Toyota">
+                    <img src="/assets/img/Tlogo.png" alt="Toyota" class="brand-link__icon">
+                </a>
+            </div>
+            <div class="col d-flex justify-content-center">
+                <a href="porsche.html" class="brand-link" title="Ver modelos Porsche">
+                    <img src="/assets/img/logoP.png" alt="Porsche" class="brand-link__icon">
+                </a>
+            </div>
+            <div class="col d-flex justify-content-center">
+                <a href="mazda.html" class="brand-link" title="Ver modelos Mazda">
+                    <img src="/assets/img/Lmazda.png" alt="Mazda" class="brand-link__icon">
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <hr class="container opacity-25">
+
+    <section id="vehiculos" class="vehicles container py-5">
+        <header class="text-center mb-4">
+            <h2 class="h3 fw-bold">Vehículos destacados</h2>
+            <p class="text-muted">Entregas inmediatas y financiación aprobada en minutos.</p>
+        </header>
+
+        <div class="row row-cols-1 row-cols-md-2 g-4 justify-content-center">
+            <div class="col">
+                <div class="card shadow-sm h-100">
+                    <img class="card-img-top" src="/assets/img/3mazda.jpg" alt="Toyota Supra 2025" style="object-fit:cover; height:200px;">
+                    <div class="card-body">
+                        <h3 class="card-title fs-5 fw-bold">Toyota Supra 2025</h3>
+                        <p class="small text-muted mb-2">
+                            <span class="badge bg-light text-dark me-2">0 km</span>
+                            <span class="badge bg-light text-dark me-2">Automático</span>
+                            <span class="badge bg-light text-dark">Gasolina</span>
+                        </p>
+                        <div class="fs-4 fw-bolder text-danger mb-3">$45,900</div>
+                        <div class="d-flex gap-2">
+                            <a href="Detalle.html" class="btn btn-primary">Ver más</a>
+                            <a href="productos.html" class="btn btn-outline-secondary">Catálogo</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card shadow-sm h-100">
+                    <img class="card-img-top" src="/assets/img/3porsche.jpg" alt="Mazda CX-5 2025" style="object-fit:cover; height:200px;">
+                    <div class="card-body">
+                        <h3 class="card-title fs-5 fw-bold">Mazda CX-5 2025</h3>
+                        <p class="small text-muted mb-2">
+                            <span class="badge bg-light text-dark me-2">0 km</span>
+                            <span class="badge bg-light text-dark me-2">Automático</span>
+                            <span class="badge bg-light text-dark">Gasolina</span>
+                        </p>
+                        <div class="fs-4 fw-bolder text-danger mb-3">$39,800</div>
+                        <div class="d-flex gap-2">
+                            <a href="Detalle.html" class="btn btn-primary">Ver más</a>
+                            <a href="productos.html" class="btn btn-outline-secondary">Catálogo</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="help container py-5 my-4 bg-light rounded shadow-sm">
+        <header class="text-center mb-4">
+            <h2 class="h4 fw-bold text-brand-dark">¿Tienes dudas?</h2>
+            <p class="text-muted">Déjanos ayudarte</p>
+        </header>
+
+        <div class="row row-cols-2 row-cols-md-4 g-4 text-center">
+            <div class="col"><a href="#" class="text-decoration-none text-brand-dark d-block p-3 border rounded h-100">Catálogos Digitales</a></div>
+            <div class="col"><a href="#" class="text-decoration-none text-brand-dark d-block p-3 border rounded h-100">Solicitar Cotización</a></div>
+            <div class="col"><a href="#" class="text-decoration-none text-brand-dark d-block p-3 border rounded h-100">Prueba de Manejo</a></div>
+            <div class="col"><a href="#" class="text-decoration-none text-brand-dark d-block p-3 border rounded h-100">Concesionarios</a></div>
+        </div>
+    </section>
+
+</main>
+<footer class="mt-auto">
+
+    <div class="bg-brand-dark text-white py-3">
+        <div class="container d-flex justify-content-center">
+            <div class="d-flex align-items-center gap-3">
+
+                <a href="#" class="social-dot"><i class="bi bi-facebook"></i></a>
+                <a href="#" class="social-dot"><i class="bi bi-instagram"></i></a>
+                <a href="#" class="social-dot"><i class="bi bi-whatsapp"></i></a>
+
+                <span class="vr text-white opacity-25 d-none d-md-inline"></span>
+
+                <div class="d-flex align-items-center gap-2 small opacity-90">
+                    <span class="payment-pill">VISA</span>
+                    <span class="payment-pill">Mastercard</span>
+                    <span class="payment-pill">PayPal</span>
+                    <span class="payment-pill">Amex</span>
+                    <span class="payment-pill">Apple&nbsp;Pay</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="bg-light-subtle">
+        <div class="container py-5">
+
+            <div class="row g-4 align-items-start justify-content-between">
+                <div class="col-12 col-md-8">
+                    <div class="row g-4">
+
+                        <div class="col-12 col-md-4">
+                            <h6 class="section-title">Información y ayuda</h6>
+                            <ul class="footer-list">
+                                <li><a class="footer-link" href="#">Ayuda</a></li>
+                                <li><a class="footer-link" href="#">Estado del pedido</a></li>
+                                <li><a class="footer-link" href="#">Envíos y devoluciones</a></li>
+                                <li><a class="footer-link" href="#">Políticas y garantías</a></li>
+                                <li><a class="footer-link" href="#">Descuentos estudiantes</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="col-12 col-md-4">
+                            <h6 class="section-title">Sobre nosotros</h6>
+                            <ul class="footer-list">
+                                <li><a class="footer-link" href="#">Quiénes somos</a></li>
+                                <li><a class="footer-link" href="#">Trabaja con nosotros</a></li>
+                                <li><a class="footer-link" href="#">Responsabilidad</a></li>
+                                <li><a class="footer-link" href="#">Relación con inversores</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="col-12 col-md-4">
+                            <h6 class="section-title">Compras desde</h6>
+                            <ul class="footer-list">
+                                <li>Estás en <strong>Ecuador</strong></li>
+                                <li><a class="footer-link" href="#">Cambiar país</a></li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-3 text-center text-md-end">
+                    <div class="footer-logo d-inline-flex flex-column align-items-center align-items-md-end">
+                        <img src="/assets/img/logo.png" class="footer-logo-img">
+                        <span class="lh-1 mt-1">
+                <small class="text-uppercase text-muted fw-semibold">Concesionaria</small>
+                <strong class="d-block">Los Jefes</strong>
+              </span>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="footer-bottom">
+                <a class="footer-link" href="#">© 2025 Concesionaria Los Jefes</a>
+                <div class="d-flex gap-3 small">
+                    <a class="footer-link" href="#">Privacidad y cookies</a>
+                    <a class="footer-link" href="#">Términos y condiciones</a>
+                    <a class="footer-link" href="#">Accesibilidad</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</footer>
+<script src="/jquery-3.7.1.min.js"></script>
+<script src="/bootstrap.bundle.min.js"></script>
+<script src="/js/Portada.js"></script>
+
+</body>
+</html>
